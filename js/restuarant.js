@@ -15,6 +15,8 @@ class Restuarant{
         this.incomeHistoryDaily = [];
         this.incomeHistoryMonthly = [];
 
+        this.menu = new Menu();
+
         //decor properties
         this.decor = { 
             floor: {
