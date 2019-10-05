@@ -1,26 +1,26 @@
 class Restuarant{
-    constructor(name,style,tables){
+    constructor(name,style,tables,waitstaff,startProfit,startRating){
         console.log("new resturant created");
         //these parameters must exist!
-        this.name = null;
+        this.name = name;
         //style of food
-        this.style = null;
-        this.tables = {};
-
+        this.style = style;
+        //num of tables
+        this.tables = tables;
+        this.waitstaff = waitstaff;
         this.profit = 0;
         this.rating = 0;
         this.incomeHistoryDaily = [];
         this.incomeHistoryMonthly = [];
 
         //decor properties
-        this.decor = {
-            
+        this.decor = { 
             floor: {
-                type: "board",
+                pattern: "board",
                 color: "brown",
             },
             walls:{
-                type: "wallpaper1",
+                pattern: "wallpaper1",
                 color: "blue",
             }
 

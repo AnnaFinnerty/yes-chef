@@ -4,6 +4,7 @@ class Game{
         this.radio = radio;
         this.industry = new Industry();
         this.eventManager = new EventManager();
+        this.restaurant = null;
         this.lengthOfHour = 1000;
         this.paused = false;
     }
@@ -13,6 +14,8 @@ class Game{
     }
     createRestuarant(){
         console.log("creating resturant");
+        this.restaurant = new Restuarant("Annie's Bistro","bistro",5,2);
+        console.log(this.restaurant);
     }
     startTimer(){
 
