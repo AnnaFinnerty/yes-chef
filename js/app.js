@@ -5,7 +5,7 @@ $( document ).ready(function() {
 
 function awake(){
     this.radio = new Radio();
-    this.radio.addEvent("new_game",this.newGame);
+    this.radio.addEvent("newGame",this.newGame);
     this.newGame();
 }
 

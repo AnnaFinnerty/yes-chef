@@ -4,18 +4,21 @@ class Game{
         this.radio = radio;
         this.industry = new Industry(this.radio);
         this.eventManager = new EventManager(this.radio);
+        this.dialogueGenerator = new DialogueGenerator(this.radio);
         this.restaurant = null;
         this.lengthOfHour = 1000;
         this.paused = false;
     }
     start(){
         console.log("starting game");
-        this.createRestuarant(this.radio);
+        this.radio.addSubscriber("Game",this.recieve);
+        this.radio.callSubscriber("EventManager", "test message");
+        this.createRestuarant();
     }
     createRestuarant(){
         console.log("creating resturant");
-        this.restaurant = new Restuarant("Annie's Bistro","bistro",5,2);
-        console.log(this.restaurant);
+        this.restaurant = new Restuarant(this.radio,"Annie's Bistro","bistro",5,2);
+        //console.log(this.restaurant);
     }
     startTimer(){
 
