@@ -1,15 +1,19 @@
 # yes-chef
 
-# Yes Chef puts users in a shoes of a chef running a small restaurant in a big city.
+### Yes Chef puts users in a shoes of a chef running a small restaurant in a big city.
 
-# The Chef can’t control the whim of the public, only what goes on the menu and what features the restaurant has.
+### The Chef can’t control the whim of the public, only what goes on the menu and what features the restaurant has.
 
-# The Chef can add and remove dishes from the menu at any time, as well as set their names and prices.
+### The Chef can add and remove dishes from the menu at any time, as well as set their names and prices.
 
-# Dishes are created by combining any number of ingredients from an ingredients dictionary with a base “dish” (i.e. salad, soup, sandwich, noodle bowl)
+## Dishes
 
-# Visitors with randomly generated preferences will visit the restaurant and rate it based on their experience. Their rating will be based on factors like:
-# *restaurant appearance too fancy/too rustic
+### Dishes are created by combining any number of ingredients from an ingredients dictionary, managed by a base “dish” (i.e. salad, soup, sandwich, noodle bowl)
+
+## Visitors
+
+### Visitors with randomly generated preferences will visit the restaurant and rate it based on their experience. Their rating will be based on factors like:
+- restaurant appearance too fancy/too rustic
 # *too many/too few dishes on menu
 # *too much meat/too little meat on menu
 # *average item price
