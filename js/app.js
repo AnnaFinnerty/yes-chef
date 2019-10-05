@@ -8,5 +8,6 @@ function newGame(){
     this.radio = new Radio();
     this.radio.addEvent("new_game",this.newGame);
     this.game = new Game(this.radio);
+    this.game.start();
 }
 
