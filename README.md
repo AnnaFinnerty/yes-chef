@@ -4,9 +4,11 @@
 
 ### The Chef can’t control the whim of the public, only what goes on the menu and what features the restaurant has.
 
-### The Chef can add and remove dishes from the menu at any time, as well as set their names and prices.
+![wireframe](/images/wireframe.png)
 
 ## Dishes
+
+### The Chef can add and remove dishes from the menu at any time, as well as set their names and prices.
 
 ### Dishes are created by combining any number of ingredients from an ingredients dictionary, managed by a base “dish” (i.e. salad, soup, sandwich, noodle bowl)
 
@@ -20,7 +22,7 @@
 - ingredients too plain/too exotic
 
 ### **Some visitors will like the restaurant so much, they will keep coming and back over and over!**
-![wireframe](/images/wireframe.png)
+
 ## Trends
 
 ### Visitors preferences are also influenced by global trends in the visitors as a whole, which change slowly over time.
