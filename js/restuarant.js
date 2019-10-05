@@ -1,5 +1,5 @@
 class Restuarant{
-    constructor(radio,name,style,tables,waitstaff,startProfit,startRating){
+    constructor(radio,name,style,tables = 5,waitstaff = 2,startProfit = 5000,startRating = 3.5){
         console.log("new resturant created");
         this.radio = radio;
         this.radio.addSubscriber("Resturant",this.recieve);
@@ -10,8 +10,8 @@ class Restuarant{
         //num of tables
         this.tables = tables;
         this.waitstaff = waitstaff;
-        this.profit = 0;
-        this.rating = 0;
+        this.profit = startProfit;
+        this.rating = startRating;
         this.incomeHistoryDaily = [];
         this.incomeHistoryMonthly = [];
 
