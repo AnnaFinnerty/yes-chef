@@ -1,5 +1,13 @@
 class Visitor{
-    constructor(){
+    constructor(name,age,preferences,){
+        this.name = name;
+        this.age = age;
+        this.preferences = preferences;
+    }
+    rate(){
         
+    }
+    writeReview(){
+
     }
 }
