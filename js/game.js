@@ -2,15 +2,15 @@ class Game{
     constructor(radio){
         console.log("game running");
         this.radio = radio;
-        this.industry = new Industry();
-        this.eventManager = new EventManager();
+        this.industry = new Industry(this.radio);
+        this.eventManager = new EventManager(this.radio);
         this.restaurant = null;
         this.lengthOfHour = 1000;
         this.paused = false;
     }
     start(){
         console.log("starting game");
-        this.createRestuarant();
+        this.createRestuarant(this.radio);
     }
     createRestuarant(){
         console.log("creating resturant");
@@ -30,7 +30,9 @@ class Game{
         this.paused = false;
     }
     recieve(message,print){
-        console.log("game recieves:");
-        console.log(message);
+        if(print){
+            console.log("Game recieves:");
+            console.log(message);
+        }
     }
 }

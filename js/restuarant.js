@@ -35,4 +35,10 @@ class Restuarant{
     validator(){
 
     }
+    recieve(message,print){
+        if(print){
+            console.log("Resturant recieves:");
+            console.log(message);
+        }
+    }
 }

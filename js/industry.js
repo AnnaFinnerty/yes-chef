@@ -1,6 +1,8 @@
 class Industry{
-    constructor(){
+    constructor(radio){
         console.log("industry running");
+        this.radio = radio;
+        this.vistorGenerator = new VisitorGenerator(this.radio);
         this.restuarantStyles = {
             "fast":{},
             "cafe":{},
@@ -11,6 +13,12 @@ class Industry{
             "italian":{},
             "chinese":{},
             "pizza":{},
+        }
+    }
+    recieve(message,print){
+        if(print){
+            console.log("Industry recieves:");
+            console.log(message);
         }
     }
 }
