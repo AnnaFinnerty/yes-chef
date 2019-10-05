@@ -20,7 +20,7 @@
 - ingredients too plain/too exotic
 
 ### **Some visitors will like the restaurant so much, they will keep coming and back over and over!**
-![wireframe](/images/logo.png)
+![wireframe](/images/wireframe.png)
 ## Trends
 
 ### Visitors preferences are also influenced by global trends in the visitors as a whole, which change slowly over time.
