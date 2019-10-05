@@ -5,7 +5,7 @@ class Restuarant{
         //style of food
         this.style = null;
         this.tables = {};
-
+        
         this.profit = 0;
         this.rating = 0;
         this.incomeHistoryDaily = [];
@@ -32,6 +32,6 @@ class Restuarant{
         this.profit -= amt;
     }
     validator(){
-        
+
     }
 }
