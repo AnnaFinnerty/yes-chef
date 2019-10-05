@@ -1,11 +1,12 @@
 class Restuarant{
     constructor(name,style,tables){
+        console.log("new resturant created");
         //these parameters must exist!
         this.name = null;
         //style of food
         this.style = null;
         this.tables = {};
-        
+
         this.profit = 0;
         this.rating = 0;
         this.incomeHistoryDaily = [];

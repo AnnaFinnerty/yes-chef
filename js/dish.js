@@ -1,5 +1,6 @@
 class Dish{
     constructor(name,menuPrice,container){
+        console.log("new dish created");
         //name price and container do not need to exist on instantiation, but can
         this.name = name ? name: null;
         this.container = container ? container : null;
