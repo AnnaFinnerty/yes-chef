@@ -19,13 +19,13 @@
 - average item price
 - ingredients too plain/too exotic
 
-# Some visitors will like the restaurant so much, they will keep coming and back over and over.
-
+### **Some visitors will like the restaurant so much, they will keep coming and back over and over!**
+![wireframe](/images/logo.png)
 ## Trends
 
-# Visitors preferences are also influenced by global trends in the visitors as a whole, which change slowly over time.
-# The chef’s task is to respond by creating new dishes to entice new, trend-conscious customers, and keep old customers still stuck in the past.
+### Visitors preferences are also influenced by global trends in the visitors as a whole, which change slowly over time.
+### The chef’s task is to respond by creating new dishes to entice new, trend-conscious customers, and keep old customers still stuck in the past.
 
 ## Success
 
-# Success is measured not only by the “stars” rating, which shows the opinion of the most recent visitors, but also by the amount of money you make. Upgrades to the restaurant include changes to decor by also the addition of appliances that makes new dish subclasses possible, like a pizza oven (pizza) or a sushi counter (sushi);
+### Success is measured not only by the “stars” rating, which shows the opinion of the most recent visitors, but also by the amount of money you make. Upgrades to the restaurant include changes to decor by also the addition of appliances that makes new dish subclasses possible, like a pizza oven (pizza) or a sushi counter (sushi);
