@@ -14,14 +14,18 @@
 
 ### Visitors with randomly generated preferences will visit the restaurant and rate it based on their experience. Their rating will be based on factors like:
 - restaurant appearance too fancy/too rustic
-# *too many/too few dishes on menu
-# *too much meat/too little meat on menu
-# *average item price
-# *ingredients too plain/too exotic
+- too many/too few dishes on menu
+- too much meat/too little meat on menu
+- average item price
+- ingredients too plain/too exotic
 
 # Some visitors will like the restaurant so much, they will keep coming and back over and over.
 
+## Trends
+
 # Visitors preferences are also influenced by global trends in the visitors as a whole, which change slowly over time.
 # The chef’s task is to respond by creating new dishes to entice new, trend-conscious customers, and keep old customers still stuck in the past.
+
+## Success
 
 # Success is measured not only by the “stars” rating, which shows the opinion of the most recent visitors, but also by the amount of money you make. Upgrades to the restaurant include changes to decor by also the addition of appliances that makes new dish subclasses possible, like a pizza oven (pizza) or a sushi counter (sushi);
