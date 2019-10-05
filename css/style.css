@@ -1,0 +1,40 @@
+body{
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    background: blanchedalmond;
+    display: grid;
+    grid-template-columns: [sidebar1] 2fr [content-column] 3fr [sidebar2] 1fr;
+    grid-template-rows: [header] 2fr [content-row] 11fr [footer] 1fr;
+    grid-template-areas: 
+    "header header header"
+    "sidebar1 main sidebar2"
+    "footer footer footer";
+}
+
+header{
+    grid-area: header;
+    background: navy;
+}
+
+footer{
+    grid-area:footer;
+    background: lightblue;
+}
+
+.reviews{
+    background:rgb(50,50,50);
+}
+
+.row{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+
+.column{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+}
