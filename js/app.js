@@ -6,7 +6,7 @@ $( document ).ready(function() {
 function awake(){
     this.radio = new Radio();
     this.radio.addEvent("newGame",this.newGame);
-    this.uiController = new UIController();
+    this.uiController = new UIController(this.radio);
     this.newGame();
 }
 

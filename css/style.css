@@ -16,7 +16,8 @@ body{
 
 header{
     grid-area: header;
-    background: navy;
+    background: rgb(21, 21, 105);
+    color: blanchedalmond;
 }
 
 footer{
@@ -25,11 +26,39 @@ footer{
     text-align: center;
 }
 
-.ingrediants-sidebar{
+#modal{
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(255,255,255,.5);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#pop-up{
+    width: 40vw;
+    height: 40vh;
+    margin: 0 auto;
+    padding: 5vw;
+    background: blanchedalmond;
+    border: 3px solid bisque;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-size: 6vh;
+}
+
+#status-display{
+    background-color: green;
+}
+
+#ingrediants-sidebar{
     background: red;
 }
 
-.reviews-sidebar{
+#reviews-sidebar{
     background:rgb(50,50,50);
 }
 
@@ -37,6 +66,7 @@ footer{
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
+    width: 100%;
 }
 
 .column{

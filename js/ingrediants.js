@@ -13,36 +13,81 @@ class Ingrediants{
 }
 
 const tempIngrediants = {
-    apple:{
-        price: .1,
-        calories: 20,
-        classes: ['fruit'],
-        cuisines: ['American','bistro'],
-        methods: ['slice', 'chop', 'dice'],
-        applications: ['raw','baked']
+    fruit:{
+        apple:{
+            price: .1,
+            calories: 20,
+            classes: ['fruit'],
+            cuisines: ['American','bistro'],
+            methods: ['slice', 'chop', 'dice'],
+            applications: ['raw','baked']
+        },
     },
-    lettuce:{
-        price: .05,
-        calories: 20,
-        classes: ['fruit'],
-        cuisines: ['American','bistro'],
-        methods: ['shred'],
-        applications: ['raw']
+    vegetables:{
+        lettuce:{
+            price: .05,
+            calories: 20,
+            classes: ['fruit'],
+            cuisines: ['American','bistro'],
+            methods: ['shred'],
+            applications: ['raw']
+        },
+        lettuce:{
+            price: .05,
+            calories: 20,
+            classes: ['fruit'],
+            cuisines: ['American','bistro'],
+            methods: ['shred'],
+            applications: ['raw']
+        },
+        tomato:{
+            price: .2,
+            calories: 20,
+            classes: ['fruit'],
+            cuisines: ['American','bistro'],
+            methods: ['shred'],
+            applications: ['raw']
+        },
     },
-    tomato:{
-        price: .2,
-        calories: 20,
-        classes: ['fruit'],
-        cuisines: ['American','bistro'],
-        methods: ['shred'],
-        applications: ['raw']
+    grains:{
+        spaghetti:{
+            price: .2,
+            calories: 20,
+            classes: ['grain', 'noodle'],
+            cuisines: ['American','Italian'],
+            methods: ['shred'],
+            applications: ['raw']
+        },
+        rice:{
+            price: .2,
+            calories: 40,
+            classes: ['grain'],
+            cuisines: ['American','Chinese','Japanese'],
+            methods: [],
+            applications: []
+        },
     },
-    spaghetti:{
-        price: .2,
-        calories: 20,
-        classes: ['noodle'],
-        cuisines: ['American','Italian'],
-        methods: ['shred'],
-        applications: ['raw']
-    }
+    dairy:{
+        cheddar:{
+            
+        }
+    },
+    meat:{
+
+    },
+    poultry:{
+
+    },
+    fish:{
+
+    },
+    shellfish:{
+
+    },
+    spices:{
+
+    },
+    misc:{
+
+    },
 }
