@@ -14,17 +14,7 @@ class Restuarant{
             incomeHistoryDaily: [],
             incomeHistoryMonthly: []
         }
-        this.name = name;
-        //style of food
-        this.style = style;
-        //num of tables
-        this.tables = tables;
-        this.waitstaff = waitstaff;
-        this.profit = startProfit;
-        this.rating = startRating;
-        this.incomeHistoryDaily = [];
-        this.incomeHistoryMonthly = [];
-
+        
         this.menu = new Menu();
 
         //decor properties

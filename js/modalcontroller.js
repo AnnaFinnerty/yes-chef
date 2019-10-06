@@ -21,11 +21,11 @@ class ModalController{
         this.loadEventListeners();
     }
     loadEventListeners(){
-        $('.close-modal-button').on('click',()=>{
-            this.closeModal();
-        })
-        this.displayElements.$modal.on('click',()=>{
-            this.closeModal();
+       
+        this.displayElements.$modal.on('click',(e)=>{
+            if(e.target.className === "modal" || e.target.className === "close-modal-button"){
+                this.closeModal();
+            }
         })
     }
     showPop(popType,message,buttons){
