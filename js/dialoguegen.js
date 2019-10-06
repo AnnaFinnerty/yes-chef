@@ -6,6 +6,11 @@ class DialogueGenerator{
             "suggestRestuarantName": this.suggestRestuarantName,
         }
     }
+    
+    suggestRestuarantName(){
+
+    }
+
     recieve(request,print){
         if(print){
             console.log("DialogueGen recieves:");
@@ -17,8 +22,6 @@ class DialogueGenerator{
             console.log("DialogueGenError: request failelure for type:" + request.type);
         }
     }
-    suggestRestuarantName(){
 
-    }
 }
 

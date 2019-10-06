@@ -1,18 +1,22 @@
 $( document ).ready(function() {
     console.log( "ready!" );
-    awake();
+    const app = new App();
 });
 
-function awake(){
-    this.radio = new Radio();
-    this.radio.addEvent("newGame",this.newGame);
-    this.uiController = new UIController(this.radio);
-    this.newGame();
-}
-
-function newGame(){
-    console.log("new game");
-    this.game = new Game(this.radio);
-    this.game.start();
+class App{
+    constructor(){
+        this.awake();
+    }
+    awake(){
+        this.radio = new Radio();
+        this.radio.addEvent("newGame",this.newGame);
+        this.uiController = new UIController(this.radio);
+        this.newGame();
+    }
+    newGame(){
+        console.log("new game");
+        this.game = new Game(this.radio);
+        this.game.start();
+    }
 }
 

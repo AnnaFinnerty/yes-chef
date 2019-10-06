@@ -1,6 +1,10 @@
 class Ingrediants{
-    constructor(){
+    constructor(radio){
+        this.radio = radio;
         console.log("ingrediants running");
+        this.requestPaths = {
+            
+        }
     }
     getIngrediant(ingrediantID){
         const source = tempIngrediants;
@@ -10,11 +14,37 @@ class Ingrediants{
             console.log("IngrediantsError: Ingrediant not found");
         }
     }
+    getListByCategory(){
+        const source = tempIngrediants;
+        const categories = {}
+        for(let cat in source){
+            categories[cat] = [];
+            for(let i in source[cat]){
+                const item = source[cat][i];
+                categories[cat].push({id:item.id,display: item.display});
+            }
+        }
+        console.log(categories);
+        return categories;
+    }
+    recieve(request,print){
+        if(print){
+            console.log("Ingrediants recieves:");
+            console.log(message);
+        }
+        if(this.requestPaths[request.type]){
+
+        } else {
+            console.log("DialogueGenError: request failelure for type:" + request.type);
+        }
+    }
 }
 
 const tempIngrediants = {
     fruit:{
         apple:{
+            id: apple,
+            display: apple,
             price: .1,
             calories: 20,
             classes: ['fruit'],
@@ -25,6 +55,8 @@ const tempIngrediants = {
     },
     vegetables:{
         lettuce:{
+            id: lettuce,
+            display: lettuce,
             price: .05,
             calories: 20,
             classes: ['fruit'],
@@ -69,7 +101,7 @@ const tempIngrediants = {
     },
     dairy:{
         cheddar:{
-            
+
         }
     },
     meat:{

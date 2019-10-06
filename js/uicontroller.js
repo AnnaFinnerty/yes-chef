@@ -3,7 +3,7 @@ class UIController{
         console.log("ui controller running");
         this.radio = radio;
         this.radio.addSubscriber("UIController",this.recieve);
-        this.modalController = new ModalController();
+        this.modalController = new ModalController(this.radio);
         this.displayElements = {
             $profitDisplay: $("#profit-display"),
             $tablesDisplay: $("#tables-display"),
