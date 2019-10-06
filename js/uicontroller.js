@@ -17,16 +17,13 @@ class UIController{
             $menuDropdown: $("#menu-dropdown"),
         }
         this.requestPaths = {
-            openResturantBuilder: this.modalController.showWindow,
+           
         }
         //tracks whether collapsable elements are open or closed
         this.collapseTracker = {
             reviewSidebar: {showing: true},
             ingrediantsSidebar: {showing: true},
         }
-        this.doSomething = $.proxy( this.recieve, this );
-        //this.recieve = this.recieve.bind(this);
-        console.log(this.recieve);
         this.loadEventListeners();
     }
     loadEventListeners(){

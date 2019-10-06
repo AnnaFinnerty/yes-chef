@@ -5,10 +5,16 @@ class Visitor{
         this.age = age;
         this.preferences = preferences;
     }
-    rate(){
-
+    rate(dish){
+        const rating = 75;
+        return rating
     }
-    writeReview(){
-
+    lookForDish(menu){
+        const choices = [];
+        for(let i in menu){
+            //evaluate menu options
+        }
+        const rating = this.rate(dish);
+        return rating
     }
 }

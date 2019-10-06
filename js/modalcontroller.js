@@ -10,8 +10,12 @@ class ModalController{
         this.$activeElement = null;
         this.displayElements = {
             $modal: $(".modal"),
+            $popUp: $(".pop-up"),
             $popUpText: $("#pop-up-text"),
-            $modalWindow: $("#modal-window"),
+            $modalWindow: $(".modal-window"),
+        }
+        this.requestPaths = {
+            openResturantBuilder: this.showWindow.bind(this),
         }
         //this.showPop(null,"test message goes here!");
         this.loadEventListeners();
@@ -26,13 +30,13 @@ class ModalController{
     }
     showPop(popType,message,buttons){
         //set active element to pop object
-        this.$activeElement = this.displayElements.$popUpText;
+        this.$activeElement = this.displayElements.$popUp;
         this.openModal();
         //build pop up and append message
+        this.displayElements.$popUp.removeClass("hidden");
         if(popType === "simple" || popType === null)
         {
-            const text = $('<span/>').text(message);
-            this.$activeElement.append(text);
+            this.displayElements.$popUpText.text(message);
         }
         //append any buttons that have been passed to method
         if(buttons && buttons.length){
@@ -44,6 +48,7 @@ class ModalController{
     showWindow(windowName){
         console.log("showing window: " + windowName);
         this.$activeElement = this.displayElements.$modalWindow;
+        this.displayElements.$modalWindow.removeClass("hidden");
         this.openModal();
     }
     openModal(){
@@ -54,15 +59,29 @@ class ModalController{
     }
     closeModal(){
         console.log("closing modal");
+        //reset the $activeElement(pop up or window) to hidden state
         this.modalOpen = true;
         this.displayElements.$modal.addClass("hidden");
         this.clearContainer(this.$activeElement);
+        this.$activeElement.addClass("hidden");
         this.$activeElement.text("");
         this.$activeElement = null;
     }
     clearContainer($container){
         while($container.firstChild){
             $container.removeChild($container.firstChild);
+        }
+    }
+    recieve(message,print){
+        if(print){
+            console.log("UIController recieves:");
+            console.log(message);
+        }
+        console.log(this);
+        console.log(this.requestPaths);
+        if(this.requestPaths[message.command]){
+            const callback = this.requestPaths[message.command];
+            callback(message.command);
         }
     }
 }

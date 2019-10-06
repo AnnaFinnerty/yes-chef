@@ -43,8 +43,8 @@ class Ingrediants{
 const tempIngrediants = {
     fruit:{
         apple:{
-            id: apple,
-            display: apple,
+            id: 'apple',
+            display: 'apple',
             price: .1,
             calories: 20,
             classes: ['fruit'],
@@ -55,16 +55,8 @@ const tempIngrediants = {
     },
     vegetables:{
         lettuce:{
-            id: lettuce,
-            display: lettuce,
-            price: .05,
-            calories: 20,
-            classes: ['fruit'],
-            cuisines: ['American','bistro'],
-            methods: ['shred'],
-            applications: ['raw']
-        },
-        lettuce:{
+            id: 'lettuce',
+            display: 'lettuce',
             price: .05,
             calories: 20,
             classes: ['fruit'],
@@ -73,6 +65,8 @@ const tempIngrediants = {
             applications: ['raw']
         },
         tomato:{
+            id: 'tomato',
+            display: 'tomato',
             price: .2,
             calories: 20,
             classes: ['fruit'],
@@ -102,13 +96,38 @@ const tempIngrediants = {
     dairy:{
         cheddar:{
 
+        },
+        milk:{
+
+        },
+        heavy_cream:{
+
+        },
+        whipped_cream:{
+
+        },
+        yogurt:{
+
         }
     },
     meat:{
+        beef_ground:{
 
+        },
+        pork_shortrib:{
+
+        },
+        beef_tenderloin:{
+
+        }
     },
     poultry:{
+        chicken_breat:{
 
+        },
+        chicken_wing:{
+
+        },
     },
     fish:{
 
