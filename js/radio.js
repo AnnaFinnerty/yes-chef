@@ -12,7 +12,7 @@ class Radio{
         if(!this.subscribers[subcriberName]){
             this.subscribers[subcriberName] = subscriberCallback;
         }
-        console.log(this.subscribers);
+        //console.log(this.subscribers);
     }
     callSubscriber(subcriberName,message){
         //sends a message to a subscriber
