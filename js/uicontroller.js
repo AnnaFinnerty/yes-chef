@@ -5,11 +5,8 @@ class UIController{
         this.radio.addSubscriber("UIController",this.recieve);
         this.modalController = new ModalController();
         this.displayElements = {
-            $modal: $("#modal"),
-            $popUp: $("#pop-up"),
             $profitDisplay: $("#profit-display"),
             $tablesDisplay: $("#tables-display"),
-            $modalWindow: $("#modal-window"),
             $starsDisplay: $("#stars-display"),
             $reviewSidebar: $("#review-sidebar"),
             $latestReviewsDisplay: $("#latest-reviews-display"),
@@ -22,15 +19,23 @@ class UIController{
         console.log(this.displayElements);
         //tracks whether collapsable elements are open or closed
         this.collapseTracker = {
-            reviewSidebar: false,
-            ingrediantsSidebar: false,
+            reviewSidebar: {showing: true},
+            ingrediantsSidebar: {showing: true},
         }
+        this.loadEventListeners();
     }
     loadEventListeners(){
-        
+        this.displayElements.$profitDisplay.on('click',()=>{
+            this.modalController.showWindow("finance-window");
+        })
     }
     toggleCollapse(elementId){
-
+        if(this.collapseTracker[elementId]){
+            this.collapseTracker[elementId]['showing'] = !this.collapseTracker[elementId]['showing'];
+            console.log(elementId + " is turned on: " + this.collapseTracker[elementId]['showing']);
+        } else {
+            console.log("UIControllerError: collapse tracker couldn't find " + elementId);
+        }
     }
     recieve(message,print){
         if(print){

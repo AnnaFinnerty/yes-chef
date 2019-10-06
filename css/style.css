@@ -40,14 +40,28 @@ footer{
     width: 40vw;
     height: 40vh;
     margin: 0 auto;
-    padding: 5vw;
     background: blanchedalmond;
     border: 3px solid bisque;
     text-align: center;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
+}
+
+#pop-up-text{
+    margin: 3vw;
     font-size: 6vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 34vw;
+    height: 100%;
+    background: white;
+}
+
+#close-modal{
+    position: absolute;
+    top: 0;
 }
 
 #status-display{
