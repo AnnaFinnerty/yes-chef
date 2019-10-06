@@ -4,6 +4,7 @@ class Game{
         this.radio = radio;
         this.industry = new Industry(this.radio);
         this.eventManager = new EventManager(this.radio);
+        this.resturantBuilder = new RestaurantBuilder(this.radio);
         this.dialogueGenerator = new DialogueGenerator(this.radio);
         this.restaurant = null;
         this.lengthOfHour = 1000;
