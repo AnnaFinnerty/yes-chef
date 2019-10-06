@@ -13,9 +13,7 @@ class Game{
     start(){
         console.log("starting game");
         this.radio.addSubscriber("Game",this.recieve);
-        this.radio.callSubscriber("EventManager", "test message");
-        this.createRestuarant();
-
+        this.radio.callSubscriber("UIController",{command:"openResturantBuilder"});
     }
     createRestuarant(){
         console.log("creating resturant");

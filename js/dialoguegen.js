@@ -1,7 +1,7 @@
 class DialogueGenerator{
     constructor(radio){
         this.radio = radio;
-        this.radio.addSubscriber("DialogueGenerator",this.recieve);
+        this.radio.addSubscriber("DialogueGenerator",this.recieve.bind(this));
         this.requestPaths = {
             "suggestRestuarantName": this.suggestRestuarantName,
         }

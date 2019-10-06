@@ -2,7 +2,7 @@ class UIController{
     constructor(radio){
         console.log("ui controller running");
         this.radio = radio;
-        this.radio.addSubscriber("UIController",this.recieve);
+        this.radio.addSubscriber("UIController",this.recieve.bind(this));
         this.modalController = new ModalController(this.radio);
         this.displayElements = {
             $profitDisplay: $("#profit-display"),
@@ -16,12 +16,17 @@ class UIController{
             $industryDropdown: $("#industry-dropdown"),
             $menuDropdown: $("#menu-dropdown"),
         }
-        console.log(this.displayElements);
+        this.requestPaths = {
+            openResturantBuilder: this.modalController.showWindow,
+        }
         //tracks whether collapsable elements are open or closed
         this.collapseTracker = {
             reviewSidebar: {showing: true},
             ingrediantsSidebar: {showing: true},
         }
+        this.doSomething = $.proxy( this.recieve, this );
+        //this.recieve = this.recieve.bind(this);
+        console.log(this.recieve);
         this.loadEventListeners();
     }
     loadEventListeners(){
@@ -39,8 +44,14 @@ class UIController{
     }
     recieve(message,print){
         if(print){
-            console.log("Game recieves:");
+            console.log("UIController recieves:");
             console.log(message);
+        }
+        console.log(this);
+        console.log(this.requestPaths);
+        if(this.requestPaths[message.command]){
+            const callback = this.requestPaths[message.command];
+            callback(message);
         }
     }
 }

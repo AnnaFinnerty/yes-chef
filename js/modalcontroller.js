@@ -2,7 +2,7 @@ class ModalController{
     constructor(radio){
         console.log("modal controller running");
         this.radio = radio;
-        this.radio.addSubscriber("ModalController",this.recieve);
+        this.radio.addSubscriber("ModalController",this.recieve.bind(this));
         this.restaurantBuilder = new RestaurantBuilder(this.radio);
         this.restaurantDecorator = new RestuarantDecorator(this.radio);
 

@@ -2,7 +2,7 @@ class Restuarant{
     constructor(radio,name,style,tables = 5,waitstaff = 2,startProfit = 5000,startRating = 3.5){
         console.log("new resturant created");
         this.radio = radio;
-        this.radio.addSubscriber("Resturant",this.recieve);
+        this.radio.addSubscriber("Resturant",this.recieve.bind(this));
         //these parameters must exist!
         this.name = name;
         //style of food

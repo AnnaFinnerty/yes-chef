@@ -2,7 +2,7 @@ class Industry{
     constructor(radio){
         console.log("industry running");
         this.radio = radio;
-        this.radio.addSubscriber("Industry",this.recieve);
+        this.radio.addSubscriber("Industry",this.recieve.bind(this));
         this.vistorGenerator = new VisitorGenerator(this.radio);
         this.restuarantStyles = {
             "fast":{},

@@ -1,7 +1,7 @@
 class RestaurantBuilder{
     constructor(radio){
         this.radio = radio;
-        this.radio.addSubscriber("ResturantBuilder",this.recieve);
+        this.radio.addSubscriber("ResturantBuilder",this.recieve.bind(this));
         this.window = $('#modal-window');
         console.log(this.window)
     }
