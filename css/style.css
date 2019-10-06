@@ -54,6 +54,17 @@ footer{
     justify-content: flex-start;
 }
 
+#modal-window-text{
+    margin: 3vw;
+    font-size: 6vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 74vw;
+    height: 100%;
+    background: white;
+}
+
 .pop-up{
     width: 40vw;
     height: 40vh;
@@ -80,6 +91,7 @@ footer{
 #close-modal{
     position: absolute;
     top: 0;
+    right: 0;
 }
 
 #status-display{

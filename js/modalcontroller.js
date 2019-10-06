@@ -49,6 +49,9 @@ class ModalController{
         console.log("showing window: " + windowName);
         this.$activeElement = this.displayElements.$modalWindow;
         this.displayElements.$modalWindow.removeClass("hidden");
+        if(windowName === "openResturantBuilder"){
+            this.restaurantBuilder.openUI();
+        }
         this.openModal();
     }
     openModal(){

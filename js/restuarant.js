@@ -3,7 +3,7 @@ class Restuarant{
         console.log("new resturant created");
         this.radio = radio;
         this.radio.addSubscriber("Resturant",this.recieve.bind(this));
-        //these parameters must exist!
+        //all properties parameters must exist or validation will fail!!
         this.name = name;
         //style of food
         this.style = style;
