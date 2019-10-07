@@ -4,6 +4,7 @@ class UIController{
         this.radio = radio;
         this.radio.addSubscriber("UIController",this.recieve.bind(this));
         this.modalController = new ModalController(this.radio);
+        this.header = new Header();
         this.displayElements = {
             $profitDisplay: $("#profit-display"),
             $tablesDisplay: $("#tables-display"),
@@ -24,45 +25,12 @@ class UIController{
             reviewSidebar: {showing: true},
             ingrediantsSidebar: {showing: true},
         }
-        this.tabsTracker = {
-            ingrediantTabs: {
-                active: null,
-                container: this.displayElements.$ingrediantsTabs,
-                elements: null,
-                elementStyle: "ingrediants-tab",
-                data: null,
-                dataLoc: "Ingrediants",
-                dataCommand: "returnIngrediantCategories",
-            }
-        }
         this.loadEventListeners();
-        this.updateTabs();
     }
     loadEventListeners(){
         this.displayElements.$profitDisplay.on('click',()=>{
             this.modalController.showWindow("financeWindow");
         })
-        for(let i in this.tabsTracker){
-            console.log(i);
-            this.updateTabs(i);
-        }
-    }
-    updateTabs(tabsName,selectedPosition){
-        console.log(tabsName);
-        if(this.tabsTracker[tabsName]){
-            if(this.tabsTracker[tabsName]['active'] === null){
-                //request tab info if not already loaded
-                this.radio.callSubscriber(this.tabsTracker[tabsName]['dataLoc'],{command:this.tabsTracker[tabsName]['dataCommand'],return:"UIController"});
-            } else {
-                console.log("time to make tabs!");
-                if(this.tabsTracker[tabsName]['elements'] === null){
-                    //if tab elements are not built, build and store them
-                    const tab = $('<div/>');
-                } else {
-
-                }
-            }
-        }
     }
     updateDisplay(elementName,value){
         if(this.displayElements[elementName]){

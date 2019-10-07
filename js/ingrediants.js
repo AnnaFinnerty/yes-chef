@@ -25,7 +25,7 @@ class Ingrediants{
         return categories;
     }
     getCategory(){
-        
+
     }
     getListByCategory(){
         //returns all ingredients divides by category... maybe not needed?
@@ -111,10 +111,20 @@ const tempIngrediants = {
     },
     dairy:{
         cheddar:{
-
+            price: .2,
+            calories: 40,
+            classes: ['dairy','cheese'],
+            cuisines: ['American'],
+            methods: [],
+            applications: []
         },
         milk:{
-
+            price: .2,
+            calories: 40,
+            classes: ['dairy','cheese'],
+            cuisines: ['American'],
+            methods: [],
+            applications: []
         },
         heavy_cream:{
 
