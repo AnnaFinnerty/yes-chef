@@ -104,6 +104,18 @@ footer{
 
 #reviews-sidebar{
     background:rgb(50,50,50);
+    text-align: center;
+}
+
+
+#menu-dropdown-button, #industry-menu-dropdown-button, #status-display,#date-container{
+    width: 25%;
+    height: 100%;
+}
+
+#menu-dropdown-button, #industry-menu-dropdown-button,#date-container{
+    font-size: 8vh;
+    text-align: center;
 }
 
 .row{

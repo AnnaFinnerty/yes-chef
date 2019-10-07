@@ -6,6 +6,17 @@ class Game{
         this.eventManager = new EventManager(this.radio);
         this.dialogueGenerator = new DialogueGenerator(this.radio);
         this.restaurant = null;
+        this.restaurant = {
+            name: "Humble Cafe",
+            style: "cafe",
+            tables: 5,
+            waitstaff: 2,
+            profitTotal: 5000,
+            profitMonth: 500,
+            rating: 3.5,
+            incomeHistoryDaily: [16,16,16],
+            incomeHistoryMonthly: [500,500,500]
+        }
         this.lengthOfHour = 1000;
         this.paused = false;
         this.timer = null;
@@ -13,9 +24,14 @@ class Game{
     start(){
         console.log("starting game");
         this.radio.addSubscriber("Game",this.recieve);
-        this.radio.callSubscriber("ModalController",{command:"openResturantBuilder"});
+        if(!this.restaurant){
+            this.radio.callSubscriber("ModalController",{command:"openResturantBuilder"});
+        } else {
+            this.createRestuarant();
+        }
+        
     }
-    createRestuarant(){
+    createRestuarant(properties){
         console.log("creating resturant");
         this.restaurant = new Restuarant(this.radio,"Annie's Bistro","bistro",5,2);
         console.log(this.restaurant);

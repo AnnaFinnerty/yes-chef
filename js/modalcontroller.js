@@ -21,7 +21,6 @@ class ModalController{
         this.loadEventListeners();
     }
     loadEventListeners(){
-       
         this.displayElements.$modal.on('click',(e)=>{
             if(e.target.className === "modal" || e.target.className === "close-modal-button"){
                 this.closeModal();

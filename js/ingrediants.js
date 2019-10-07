@@ -2,8 +2,9 @@ class Ingrediants{
     constructor(radio){
         this.radio = radio;
         console.log("ingrediants running");
+        this.radio.addSubscriber("Ingrediants",this.recieve.bind(this));
         this.requestPaths = {
-            
+            returnIngrediantCategories: this.getCategories,
         }
     }
     getIngrediant(ingrediantID){
@@ -14,9 +15,22 @@ class Ingrediants{
             console.log("IngrediantsError: Ingrediant not found");
         }
     }
-    getListByCategory(){
+    getCategories(){
+        //returns list of categories as an array (for menus, tabs, etc.)
         const source = tempIngrediants;
-        const categories = {}
+        const categories = [];
+        for(let cat in source){
+            categories.push(cat);
+        }
+        return categories;
+    }
+    getCategory(){
+        
+    }
+    getListByCategory(){
+        //returns all ingredients divides by category... maybe not needed?
+        const source = tempIngrediants;
+        const categories = {};
         for(let cat in source){
             categories[cat] = [];
             for(let i in source[cat]){
@@ -30,12 +44,14 @@ class Ingrediants{
     recieve(request,print){
         if(print){
             console.log("Ingrediants recieves:");
-            console.log(message);
+            console.log(request);
         }
-        if(this.requestPaths[request.type]){
-
+        if(this.requestPaths[request.command]){
+            const callback = this.requestPaths[request.command];
+            const info = callback();
+            this.radio.callSubscriber(request.return,{command: request.command,info:info})
         } else {
-            console.log("DialogueGenError: request failelure for type:" + request.type);
+            console.log("DialogueGenError: request failure for type:" + request.type);
         }
     }
 }

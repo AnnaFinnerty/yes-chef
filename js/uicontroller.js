@@ -15,21 +15,53 @@ class UIController{
             $ingrediantsTabs: $("#ingrediants-tabs"),
             $industryDropdown: $("#industry-dropdown"),
             $menuDropdown: $("#menu-dropdown"),
-        }
-        this.requestPaths = {
-           
+            $dateDay: $('date-day'),
+            $dateMonth: $('date-month'),
+            $dateYear: $('date-year'),
         }
         //tracks whether collapsable elements are open or closed
         this.collapseTracker = {
             reviewSidebar: {showing: true},
             ingrediantsSidebar: {showing: true},
         }
+        this.tabsTracker = {
+            ingrediantTabs: {
+                active: null,
+                data: null,
+                dataLoc: "Ingrediants",
+                dataCommand: "returnIngrediantCategories",
+            }
+        }
         this.loadEventListeners();
+        this.updateTabs();
     }
     loadEventListeners(){
         this.displayElements.$profitDisplay.on('click',()=>{
-            this.modalController.showWindow("finance-window");
+            this.modalController.showWindow("financeWindow");
         })
+        for(let i in this.tabsTracker){
+            console.log(i);
+            this.updateTabs(i);
+        }
+    }
+    updateTabs(tabsName){
+        //get tab info if not loaded
+        console.log(tabsName);
+        if(this.tabsTracker[tabsName]){
+            if(this.tabsTracker[tabsName]['active'] === null){
+                //request tabs information from module that holds it
+                this.radio.callSubscriber(this.tabsTracker[tabsName]['dataLoc'],{command:this.tabsTracker[tabsName]['dataCommand'],return:"UIController"});
+            } else {
+                console.log("time to make tabs!");
+            }
+        }
+    }
+    updateDisplay(elementName,value){
+        if(this.displayElements[elementName]){
+            this.displayElements[elementName].text(value);
+        } else {
+            console.log("UIError: display element " + elementName + " not found");
+        }
     }
     toggleCollapse(elementId){
         if(this.collapseTracker[elementId]){
@@ -44,11 +76,11 @@ class UIController{
             console.log("UIController recieves:");
             console.log(message);
         }
-        console.log(this);
-        console.log(this.requestPaths);
-        if(this.requestPaths[message.command]){
-            const callback = this.requestPaths[message.command];
-            callback(message);
+        if(message.command === "returnIngrediantCategories"){
+            this.tabsTracker.ingrediantTabs.data = message.info;
+            this.tabsTracker.ingrediantTabs.active = 0;
+            this.updateTabs("ingrediantTabs");
         }
+        console.log(this.tabsTracker);
     }
 }
