@@ -35,8 +35,8 @@ class Game{
         if(!this.paused){
            this.timer = setInterval(()=>{
                // increment clock in a awkwardly written way
-                if(this.hour < 2400){
-                    this.hour += 100;
+                if(this.hour < 24){
+                    this.hour += 1;
                 } else {
                     this.hour = 0;
                     if(this.day < 30){
