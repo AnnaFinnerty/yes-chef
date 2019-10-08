@@ -8,19 +8,25 @@ class Header{
             $tablesDisplay: $("#tables-display"),
             $industryDropdown: $("#industry-dropdown"),
             $menuDropdown: $("#menu-dropdown"),
-            $dateDay: $('date-day'),
-            $dateMonth: $('date-month'),
-            $dateYear: $('date-year'),
+            $dateHour: $('#date-hour'),
+            $dateDay: $('#date-day'),
+            $dateMonth: $('#date-month'),
+            $dateYear: $('#date-year'),
         }
-        this.loadEventListeners();
+        this.awake();
     }
-    loadEventListeners(){
+    awake(){
+        this.radio.subscribeToEvent("updateTime",this.recieve.bind(this));
         this.displayElements.$profitDisplay.on('click',()=> {
-            this.modalController.showWindow("financeWindow");
+            // not working now that header is moved!
+            //this.modalController.showWindow("financeWindow");
         })
     }
     updateDisplay(elementName,value){
+        //console.log(value);
+        //console.log(elementName);
         if(this.displayElements[elementName]){
+            //console.log(this.displayElements[elementName]);
             this.displayElements[elementName].text(value);
         } else {
             console.log("UIError: display element " + elementName + " not found");
@@ -30,6 +36,11 @@ class Header{
         if(print){
             console.log("Header recieves:");
             console.log(message);
+        }
+        
+        if(message.command === "updateTime"){
+            this.updateDisplay("$dateHour",message.data.hour);
+            this.updateDisplay("$dateDay",message.data.day);
         }
     }
 }

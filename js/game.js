@@ -2,6 +2,7 @@ class Game{
     constructor(radio){
         console.log("game running");
         this.radio = radio;
+        this.radio.addSubscriber("Game",this.recieve.bind(this));
         this.industry = new Industry(this.radio);
         this.eventManager = new EventManager(this.radio);
         this.dialogueGenerator = new DialogueGenerator(this.radio);
@@ -17,7 +18,7 @@ class Game{
             incomeHistoryDaily: [16,16,16],
             incomeHistoryMonthly: [500,500,500]
         }
-        this.lengthOfHour = 1000;
+        this.lengthOfHour = 500;
         this.paused = false;
         this.year = 0;
         this.month = 0;
@@ -28,7 +29,6 @@ class Game{
     start(){
         console.log("starting game");
         this.radio.addSubscriber("Game",this.recieve.bind(this));
-        this.radio.addEvent("timeUpdate");
         if(!this.restaurant){
             this.radio.callSubscriber("ModalController",{command:"openResturantBuilder"});
         } else {
@@ -61,7 +61,12 @@ class Game{
                         }
                     }
                 }
-                
+                this.radio.notifyEventSubcribers("updateTime", {
+                    hour: this.hour,
+                    day: this.day,
+                    month: this.month,
+                    year: this.year,
+                })
                 this.update();
            },this.lengthOfHour)
         }

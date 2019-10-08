@@ -5,7 +5,8 @@ class Radio{
         this.events = {};
         this.retainedEvents = ["newGame"];
         this.printMessage = true;
-        this.blockedEvents = [];
+        this.blockedEvents = ["updateTime"];
+        this.addEvent("updateTime");
     }
     addSubscriber(subcriberName, subscriberCallback){
         //add a subcriber to list of subscribers
@@ -17,10 +18,11 @@ class Radio{
     callSubscriber(subcriberName,message){
         //sends a message to a subscriber
         console.log("calling subscriber");
+        const print = this.blockedEvents.indexOf(message.command) < 0 ? true: false;
         if(this.subscribers[subcriberName]){
             console.log("subscriber name: " + subcriberName );
             const callback = this.subscribers[subcriberName];
-            callback(message,this.printMessage);
+            callback(message,print);
         } else {
             console.log("callSubscriberError: subscriber " + subcriberName + " not found");
         }
@@ -28,9 +30,9 @@ class Radio{
     addEvent(eventName){
         if(!this.events[eventName]){
             this.events[eventName] = {
-                subcribers: [],
+                subscribers: [],
             };
-            console.log("event added");
+            console.log("event added: " + eventName);
             console.log(this.events);
         }
     }
@@ -38,15 +40,19 @@ class Radio{
         if(!this.events[eventName]){
             console.log(subscriberCallback, "subscription to " + eventName + " failed");
         } else {
-            this.events[eventName].subcribers.push(subscriberCallback);
+            this.events[eventName].subscribers.push(subscriberCallback);
         }
     }
-    
-    sendEvent(eventName,message){
-        const subcribers = this.events[eventName]['subcribers'];
-        for(let i = 0; i < this.subscribers.length; i++){
-            const callback = this.subscribers[i];
-            callback(message);
+    notifyEventSubcribers(eventName,data){
+        if(this.events[eventName]){
+            const subscribers = this.events[eventName]['subscribers'];
+            for(let i = 0; i < subscribers.length; i++){
+                const callback = subscribers[i];
+                const print = this.blockedEvents.indexOf(eventName) < 0 ? true: false;
+                callback({command:eventName,data:data},print);
+            }
+        } else {
+            console.log("notifySubscriberError: event " + eventName + " not found");
         }
     }
     resetRadio(){

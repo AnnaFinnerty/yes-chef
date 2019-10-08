@@ -4,7 +4,7 @@ class UIController{
         this.radio = radio;
         this.radio.addSubscriber("UIController",this.recieve.bind(this));
         this.modalController = new ModalController(this.radio);
-        this.header = new Header(this.radio);
+        this.header = new Header(radio);
         this.ingrediantsSidebar = new IngrediantSidebar(this.radio);
         this.reviewSidebar = new ReviewSidebar(this.radio);
         this.viewWindow = new ViewWindow(this.radio);

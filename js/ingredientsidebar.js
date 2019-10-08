@@ -24,12 +24,9 @@ class IngrediantSidebar{
             this.radio.callSubscriber(this.ingrediantTabs['dataLoc'],{command:this.ingrediantTabs.dataCommand,return:"IngrediantSidebar"});
         } else {
             if(this.ingrediantTabs['elements'] === null){
-                console.log("time to make tabs");
-                console.log(this.ingrediantTabs.data);
+                 //if tab elements are not built, build and store tabs
                 this.ingrediantTabs['elements'] = [];
-                //if tab elements are not built, build and store them
                 for(let i = 0; i < this.ingrediantTabs.data.length; i++){
-                    console.log(this.ingrediantTabs.data[i]);
                     const $tab = $('<div/>').attr('data-id',this.ingrediantTabs.data[i]);
                     if(i === this.ingrediantTabs.active){
                         $tab.addClass("ingrediant-tab selected");
@@ -43,6 +40,7 @@ class IngrediantSidebar{
                 }
             } else {
                 console.log("time to update tabs");
+                //if tabs are built and loaded, update them
                 
             }
         }
