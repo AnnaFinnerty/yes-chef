@@ -9,7 +9,7 @@
     <link href="https://fonts.googleapis.com/css?family=Caveat&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
-<body>
+<body class="column">
     <header class="row">
         <nav class="row">
             <div class="column" id="status-display">
@@ -27,14 +27,18 @@
                 industry
                 <div class="dropdown" id="industry-dropdown"></div>
             </div>
-            <div id="date-container row">
-                <h3 id="date-hour">0</h3>
-                <h3 id="date-day">0</h3>
-                <h3 id="date-month">0</h3>
-                <h3 id="date-year">0</h3>
+            <div class="row" id="date-container">
+                <h4 id="date-hour">0</h4>
+                <div class="row">
+                    <h4 id="date-day">0</h4><h4>/</h4>
+                    <h4 id="date-month">0</h4><h4>/</h4>
+                    <h4 id="date-year">0</h4><h4>/</h4>
+                </div>
+                
             </div>
         </nav>
     </header>
+    <main class="row">
         <aside id="ingrediants-sidebar">
             <div class="scrollY" id="ingrediants-selector"></div>
             <div id="ingrediants-tabs"></div>
@@ -45,6 +49,7 @@
             <span id="stars-display">***</span>
             <div class="column scrollY" id="latest-reviews-display"></div>
         </aside>
+    </main>
     <footer>by Anna Finnerty</footer>
     <div class="modal hidden">
         <div class="pop-up hidden">

@@ -1,13 +1,14 @@
 class Game{
     constructor(radio,testMode){
         console.log("game running");
+        this.testMode = testMode;
         this.radio = radio;
         this.radio.addSubscriber("Game",this.recieve.bind(this));
         this.industry = new Industry(this.radio);
         this.eventManager = new EventManager(this.radio);
         this.dialogueGenerator = new DialogueGenerator(this.radio);
         this.restaurant = {};
-        this.lengthOfHour = 500;
+        this.lengthOfHour = testMode ? 500: 100;
         this.paused = false;
         this.year = 0;
         this.month = 0;

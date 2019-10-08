@@ -12,7 +12,7 @@ class ReviewSidebar{
         }
     }
     updateStars(stars){
-        this.stars = stars;
+        this.stars = stars
     }
     updateReviews(){
         for(let i = 0; i < this.recentReviews.length; i++){
