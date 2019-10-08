@@ -135,7 +135,6 @@ footer{
     width: 7vw;
     transform-origin: center;
     margin: 5px;
-    transform: rotate(90deg);
 }
 
 .selected{
