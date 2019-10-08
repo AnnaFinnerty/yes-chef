@@ -95,18 +95,45 @@ footer{
 }
 
 #status-display{
-    background-color: green;
+    background-color:navy;
+    color: green;
 }
 
 #ingrediants-sidebar{
     background: red;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+#ingrediants-selector{
+    background: green;
+    width: 90%;
+    height: 100%;
+}
+
+#ingrediants-tabs{
+    background: purple;
+    width: 10%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.ingrediant-tab{
+    background: white;
+    width: auto;
+    transform: rotate(90deg);
+}
+
+.selected{
+    background: dimgray;
 }
 
 #reviews-sidebar{
     background:rgb(50,50,50);
     text-align: center;
 }
-
 
 #menu-dropdown-button, #industry-menu-dropdown-button, #status-display,#date-container{
     width: 25%;

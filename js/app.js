@@ -9,7 +9,7 @@ class App{
     }
     awake(){
         this.radio = new Radio();
-        this.radio.addEvent("newGame",this.newGame);
+        this.radio.addEvent("newGame",this.newGame.bind(this));
         this.ingrediantsDB = new Ingrediants(this.radio);
         this.uiController = new UIController(this.radio);
         this.newGame();

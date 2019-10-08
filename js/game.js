@@ -19,11 +19,15 @@ class Game{
         }
         this.lengthOfHour = 1000;
         this.paused = false;
+        this.year = 0;
+        this.day = 0;
+        this.hour = 0;
         this.timer = null;
     }
     start(){
         console.log("starting game");
-        this.radio.addSubscriber("Game",this.recieve);
+        this.radio.addSubscriber("Game",this.recieve.bind(this));
+        this.radio.addEvent("timeUpdate");
         if(!this.restaurant){
             this.radio.callSubscriber("ModalController",{command:"openResturantBuilder"});
         } else {

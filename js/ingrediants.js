@@ -2,39 +2,39 @@ class Ingrediants{
     constructor(radio){
         this.radio = radio;
         console.log("ingrediants running");
+        this.source = tempIngrediants;
         this.radio.addSubscriber("Ingrediants",this.recieve.bind(this));
         this.requestPaths = {
-            returnIngrediantCategories: this.getCategories,
+            returnIngrediantCategories: this.getCategories.bind(this),
+            returnCategoryList: this.getCategory.bind(this),
         }
     }
     getIngrediant(ingrediantID){
-        const source = tempIngrediants;
-        if(source[ingrediantID]){
-            return source[ingrediantID];
+        if(this.source[ingrediantID]){
+            return this.source[ingrediantID];
         } else {
             console.log("IngrediantsError: Ingrediant not found");
         }
     }
     getCategories(){
         //returns list of categories as an array (for menus, tabs, etc.)
-        const source = tempIngrediants;
         const categories = [];
-        for(let cat in source){
+        for(let cat in this.source){
             categories.push(cat);
         }
         return categories;
     }
-    getCategory(){
-
+    getCategory(category){
+        console.log("getting category");
+        
     }
     getListByCategory(){
         //returns all ingredients divides by category... maybe not needed?
-        const source = tempIngrediants;
         const categories = {};
-        for(let cat in source){
+        for(let cat in this.source){
             categories[cat] = [];
-            for(let i in source[cat]){
-                const item = source[cat][i];
+            for(let i in this.source[cat]){
+                const item = this.source[cat][i];
                 categories[cat].push({id:item.id,display: item.display});
             }
         }
@@ -51,7 +51,7 @@ class Ingrediants{
             const info = callback();
             this.radio.callSubscriber(request.return,{command: request.command,info:info})
         } else {
-            console.log("DialogueGenError: request failure for type:" + request.type);
+            console.log("IngrediantsDBGenError: request failure for type:" + request.type);
         }
     }
 }
@@ -121,50 +121,110 @@ const tempIngrediants = {
         milk:{
             price: .2,
             calories: 40,
-            classes: ['dairy','cheese'],
+            classes: ['dairy'],
             cuisines: ['American'],
             methods: [],
             applications: []
         },
         heavy_cream:{
-
-        },
-        whipped_cream:{
-
+            price: .4,
+            calories: 80,
+            classes: ['dairy'],
+            cuisines: ['American'],
+            methods: [],
+            applications: []
         },
         yogurt:{
-
+            price: .3,
+            calories: 60,
+            classes: ['dairy'],
+            cuisines: ['American','Greek'],
+            methods: [],
+            applications: []
         }
     },
     meat:{
         beef_ground:{
-
-        },
-        pork_shortrib:{
-
+            price: .5,
+            calories: 120,
+            classes: ['meat','beef'],
+            cuisines: ['American','Greek'],
+            methods: [],
+            applications: []
         },
         beef_tenderloin:{
-
-        }
+            price: .5,
+            calories: 120,
+            classes: ['meat','pork'],
+            cuisines: ['American','Greek'],
+            methods: [],
+            applications: []
+        },
+        pork_shortrib:{
+            price: .5,
+            calories: 120,
+            classes: ['meat','pork'],
+            cuisines: ['American','Greek'],
+            methods: [],
+            applications: []
+        }, 
     },
     poultry:{
-        chicken_breat:{
-
+        chicken_breast:{
+            price: .5,
+            calories: 100,
+            classes: ['poultry','chicken'],
+            cuisines: ['American','Greek'],
+            methods: [],
+            applications: []
         },
         chicken_wing:{
-
+            price: .5,
+            calories: 70,
+            classes: ['poultry','chicken'],
+            cuisines: ['American','Greek'],
+            methods: [],
+            applications: []
         },
     },
     fish:{
-
+        cod:{
+            price: .5,
+            calories: 60,
+            classes: ['fish'],
+            cuisines: ['American','Greek'],
+            methods: [],
+            applications: []
+        },
     },
     shellfish:{
-
+        shrimp:{
+            price: .5,
+            calories: 50,
+            classes: ['shellfish'],
+            cuisines: ['American','Greek'],
+            methods: [],
+            applications: []
+        },
     },
     spices:{
-
+        tarragon:{
+            price: .05,
+            calories: 0,
+            classes: ['mic'],
+            cuisines: ['American','Greek'],
+            methods: [],
+            applications: []
+        },
     },
     misc:{
-
+        vinegar:{
+            price: .05,
+            calories: 0,
+            classes: ['misc'],
+            cuisines: ['American','Greek'],
+            methods: [],
+            applications: []
+        },
     },
 }

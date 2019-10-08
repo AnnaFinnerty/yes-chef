@@ -25,10 +25,9 @@ class Radio{
             console.log("callSubscriberError: subscriber " + subcriberName + " not found");
         }
     }
-    addEvent(eventName,callback){
+    addEvent(eventName){
         if(!this.events[eventName]){
             this.events[eventName] = {
-                callback: callback,
                 subcribers: [],
             };
             console.log("event added");
@@ -40,6 +39,13 @@ class Radio{
             console.log(subscriberCallback, "subscription to " + eventName + " failed");
         } else {
             this.events[eventName].subcribers.push(subscriberCallback);
+        }
+    }
+    sendEvent(eventName,message){
+        const subcribers = this.events[eventName]['subcribers'];
+        for(let i = 0; i < this.subscribers.length; i++){
+            const callback = this.subscribers[i];
+            callback(message);
         }
     }
     resetRadio(){
