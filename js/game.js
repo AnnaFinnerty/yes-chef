@@ -1,23 +1,12 @@
 class Game{
-    constructor(radio){
+    constructor(radio,testMode){
         console.log("game running");
         this.radio = radio;
         this.radio.addSubscriber("Game",this.recieve.bind(this));
         this.industry = new Industry(this.radio);
         this.eventManager = new EventManager(this.radio);
         this.dialogueGenerator = new DialogueGenerator(this.radio);
-        this.restaurant = null;
-        this.restaurant = {
-            name: "Humble Cafe",
-            style: "cafe",
-            tables: 5,
-            waitstaff: 2,
-            profitTotal: 5000,
-            profitMonth: 500,
-            rating: 3.5,
-            incomeHistoryDaily: [16,16,16],
-            incomeHistoryMonthly: [500,500,500]
-        }
+        this.restaurant = {};
         this.lengthOfHour = 500;
         this.paused = false;
         this.year = 0;

@@ -5,9 +5,7 @@ $( document ).ready(function() {
 
 class App{
     constructor(){
-        this.awake();
-    }
-    awake(){
+        this.testMode = true;
         this.radio = new Radio();
         this.ingrediantsDB = new Ingrediants(this.radio);
         this.uiController = new UIController(this.radio);
@@ -15,7 +13,7 @@ class App{
     }
     newGame(){
         console.log("new game");
-        this.game = new Game(this.radio);
+        this.game = new Game(this.radio,this.testMode);
         this.game.start();
     }
 }
