@@ -36,27 +36,26 @@ class Game{
            this.timer = setInterval(()=>{
                // increment clock in a awkwardly written way
                 if(this.hour < 24){
-                    this.hour += 1;
+                    this.hour++;
                 } else {
                     this.hour = 0;
                     if(this.day < 30){
-                        this.day += 1;
+                        this.day++;
                     } else {
                         this.day = 0;
                         if(this.month < 12){
-                            this.month += 1;
+                            this.month++;
                         } else {
                             this.month = 1;
-                            this.year += 1;
+                            this.year++;
                         }
                     }
                 }
-                this.radio.notifyEventSubcribers("updateTime", {
-                    hour: this.hour,
-                    day: this.day,
-                    month: this.month,
-                    year: this.year,
-                })
+                const hourToDisplay = this.hour < 10 ? "0" + this.hour + "00" : this.hour + "00";
+                $('#date-hour').text(hourToDisplay);
+                $('#date-day').text(this.day);
+                $('#date-month').text(this.month);
+                $('#date-year').text(this.year);
                 this.update();
            },this.lengthOfHour)
         }

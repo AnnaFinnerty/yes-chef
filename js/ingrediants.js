@@ -8,6 +8,14 @@ class Ingrediants{
             returnIngrediantCategories: this.getCategories.bind(this),
             returnCategoryList: this.getCategory.bind(this),
         }
+        this.displayElements = {
+            $ingrediantsSidebar: $("#ingrediants-sidebar"),
+            $ingrediantsSelector: $("#ingrediants-selector"),
+            $ingrediantsTabsContainer: $("#ingrediants-tabs"),
+            $ingrediantsTabs: []
+        }
+        this.selectedTab = null;
+        this.buildTabs();
     }
     getIngrediant(ingrediantID){
         if(this.source[ingrediantID]){
@@ -40,6 +48,29 @@ class Ingrediants{
         }
         console.log(categories);
         return categories;
+    }
+    buildTabs(){
+        //if tab elements are not built, build and store tabs
+        const categories = this.getCategories();
+        for(let i = 0; i < categories.length; i++){
+            const $tab = $('<div/>').attr('data-id',categories[i]);
+            $tab.text(categories[i]);
+            this.displayElements.$ingrediantsTabsContainer.append($tab);
+            this.displayElements.$ingrediantsTabs.push($tab);
+        }
+        this.updateTabs();
+    }
+    updateTabs(newTabNum){
+        if(!this.selectedTab){
+            this.selectedTab = 0;
+            this.displayElements.$ingrediantsTabs[0].addClass("selected");
+        } else {
+            if(this.selectedTab !== newTabNum){
+                this.displayElements.$ingrediantsTabs[this.selectedTab].removeClass("selected");
+                this.displayElements.$ingrediantsTabs[newTab].addClass("selected");
+                this.selectedTab = newTab;
+            }
+        }
     }
     recieve(request,print){
         if(print){

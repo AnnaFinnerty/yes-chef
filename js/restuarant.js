@@ -31,6 +31,17 @@ class Restuarant{
             }
 
         }
+
+        this.displayElements = {
+            $nameDisplay: $('#name-display'),
+        }
+        
+        this.updateName();
+    }
+    updateName(){
+        console.log(this.displayElements.$nameDisplay);
+        console.log(this.name);
+        this.displayElements.$nameDisplay.text(this.properties.name);
     }
     profit(amt){
         this.properties.profit += amt;

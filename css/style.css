@@ -15,6 +15,16 @@ body{
     "footer footer footer";*/
 }
 
+h1{
+    text-align: center;
+}
+
+h4{
+    font-size: 5.5vh;
+}
+
+
+
 header{
     /*grid-area: header;*/
     background: rgb(21, 21, 105);
@@ -22,9 +32,68 @@ header{
     height: 20vh;
 }
 
+#status-display{
+    background-color:navy;
+    color: green;
+}
+
+
+#menu-dropdown-button, #industry-menu-dropdown-button, #status-display,#date-container{
+    width: 25%;
+    height: 100%;
+}
+
+#menu-dropdown-button, #industry-menu-dropdown-button,#date-container{
+    font-size: 8vh;
+    text-align: center;
+}
+
+
+
+/*  */
+
 main{
     height: 75vh;
 }
+
+#ingrediants-sidebar{
+    background: red;
+    display: flex;
+    flex-direction: row;
+    width: 25vw;
+}
+
+#ingrediants-selector{
+    background: gainsboro;
+    width: 90%;
+    height: 100%;
+}
+
+#ingrediants-tabs{
+    width: 10%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.ingrediant-tab{
+    background: white;
+    width: 7vw;
+    transform-origin: center;
+    margin: 5px;
+}
+
+#view-window{
+    width: 60vw;
+}
+#reviews-sidebar{
+    background:rgb(50,50,50);
+    text-align: center;
+    width: 15vw;
+}
+
+
+/*  */
 
 footer{
     /* grid-area:footer; */
@@ -33,11 +102,7 @@ footer{
     height: 5vh;
 }
 
-.close-modal-button{
-    width: 5vw;
-    height: 5vw;
-    float: right;
-}
+/*  */
 
 .modal{
     position: fixed;
@@ -101,60 +166,20 @@ footer{
     right: 0;
 }
 
-#status-display{
-    background-color:navy;
-    color: green;
+.close-modal-button{
+    width: 5vw;
+    height: 5vw;
+    float: right;
 }
 
-#ingrediants-sidebar{
-    background: red;
-    display: flex;
-    flex-direction: row;
-    width: 25vw;
-}
 
-#ingrediants-selector{
-    background: gainsboro;
-    width: 90%;
-    height: 100%;
-}
 
-#ingrediants-tabs{
-    width: 10%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-}
 
-#view-window{
-    width: 60vw;
-}
+/*  */
 
-.ingrediant-tab{
-    background: white;
-    width: 7vw;
-    transform-origin: center;
-    margin: 5px;
-}
 
 .selected{
     background: dimgray;
-}
-
-#reviews-sidebar{
-    background:rgb(50,50,50);
-    text-align: center;
-    width: 15vw;
-}
-
-#menu-dropdown-button, #industry-menu-dropdown-button, #status-display,#date-container{
-    width: 25%;
-    height: 100%;
-}
-
-#menu-dropdown-button, #industry-menu-dropdown-button,#date-container{
-    font-size: 8vh;
-    text-align: center;
 }
 
 .row{
