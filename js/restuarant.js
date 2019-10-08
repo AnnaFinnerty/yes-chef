@@ -1,5 +1,5 @@
 class Restuarant{
-    constructor(radio,name,style, openHour = 1500, closeHour = 2000, tables = 5,waitstaff = 2,profit = 5000, rating = 3.5){
+    constructor(radio,name = "Corner Cafe",style = "cafe", openHour = 1500, closeHour = 2000, tables = 5,waitstaff = 2,profit = 5000, rating = 3.5){
         console.log("new resturant created");
         this.radio = radio;
         this.radio.addSubscriber("Resturant",this.recieve.bind(this));

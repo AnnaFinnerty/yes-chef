@@ -20,6 +20,7 @@ class Game{
         this.lengthOfHour = 1000;
         this.paused = false;
         this.year = 0;
+        this.month = 0;
         this.day = 0;
         this.hour = 0;
         this.timer = null;
@@ -33,16 +34,34 @@ class Game{
         } else {
             this.createRestuarant();
         }
-        
     }
     createRestuarant(properties){
         console.log("creating resturant");
-        this.restaurant = new Restuarant(this.radio,"Annie's Bistro","bistro",5,2);
+        this.restaurant = new Restuarant(this.radio);
         console.log(this.restaurant);
+        this.startTimer();
     }
     startTimer(){
         if(!this.paused){
            this.timer = setInterval(()=>{
+               // increment clock in a awkwardly written way
+                if(this.hour < 2400){
+                    this.hour += 100;
+                } else {
+                    this.hour = 0;
+                    if(this.day < 30){
+                        this.day += 1;
+                    } else {
+                        this.day = 0;
+                        if(this.month < 12){
+                            this.month += 1;
+                        } else {
+                            this.month = 1;
+                            this.year += 1;
+                        }
+                    }
+                }
+                
                 this.update();
            },this.lengthOfHour)
         }

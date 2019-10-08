@@ -41,6 +41,7 @@ class Radio{
             this.events[eventName].subcribers.push(subscriberCallback);
         }
     }
+    
     sendEvent(eventName,message){
         const subcribers = this.events[eventName]['subcribers'];
         for(let i = 0; i < this.subscribers.length; i++){
