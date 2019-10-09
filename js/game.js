@@ -9,7 +9,7 @@ class Game{
         this.dialogueGenerator = new DialogueGenerator(this.radio);
         this.restaurant = {};
         this.lengthOfHour = testMode ? 500: 100;
-        this.paused = false;
+        this.paused = true;
         this.year = 0;
         this.month = 0;
         this.day = 0;
@@ -20,7 +20,8 @@ class Game{
         console.log("starting game");
         this.radio.addSubscriber("Game",this.recieve.bind(this));
         if(!this.restaurant){
-            this.radio.callSubscriber("ModalController",{command:"openResturantBuilder"});
+            const stylesList = this.industry.getStylesList();
+            new RestuarantModal(this.radio,stylesList);
         } else {
             this.createRestuarant();
         }
@@ -30,6 +31,7 @@ class Game{
         const stylesList = this.industry.getStylesList();
         this.restaurant = new Restuarant(this.radio,stylesList,this.testMode);
         console.log(this.restaurant);
+        this.paused = false;
         this.startTimer();
     }
     startTimer(){
@@ -38,6 +40,16 @@ class Game{
                // increment clock in a awkwardly written way
                 if(this.hour < 24){
                     this.hour++;
+                    //toggle open/closed signs at selected hours
+                    if(this.hour === this.restaurant.properties.openHour){
+                        this.open();
+                    }
+                    if(this.hour >= this.restaurant.properties.openHour && this.hour < this.restaurant.properties.closeHour){
+                        this.stayOpen();
+                    }
+                    if(this.hour === this.restaurant.properties.closeHour){
+                        this.close();
+                    }
                 } else {
                     this.hour = 0;
                     if(this.day < 30){
@@ -55,21 +67,22 @@ class Game{
                 const hourToDisplay = this.hour < 10 ? "0" + this.hour + "00" : this.hour + "00";
                 $('#time-display').text(hourToDisplay);
                 $('#date-display').text(this.day + "/" + this.month + "/" + this.year);
-                this.update();
            },this.lengthOfHour)
         }
     }
     stopTimer(){
         clearInterval(this.timer);
     }
-    update(){
-        //call update methods here
-        //eventManager checks for new events
-        //visitorGen adds new visitors if open
-        this.actuate();
+    open(){
+        $('#open-display').text("OPEN")
+        $('#open-display').removeClass("closed").addClass("open");
     }
-    actuate(){
-        //acuate updates animations if necessary
+    stayOpen(){
+        this.industry.nextVisitors();
+    }
+    close(){
+        $('#open-display').text("CLOSED")
+        $('#open-display').removeClass("open").addClass("closed");
     }
     pause(){
         this.paused = true;

@@ -1,5 +1,5 @@
 class Restuarant{
-    constructor(radio,styles, testMode, name = "Corner Cafe",style = "cafe", openHour = 1500, closeHour = 2000, tables = 5,waitstaff = 2,profitTotal = 5000,profitDaily = 50, rating = 3.5){
+    constructor(radio,styles, testMode, name = "Corner Cafe",style = "cafe", openHour = 15, closeHour = 20, tables = 5,waitstaff = 2,profitTotal = 5000,profitDaily = 50, rating = 3.5){
         console.log("new resturant created");
         this.radio = radio;
         this.radio.addSubscriber("Resturant",this.recieve.bind(this));
@@ -29,10 +29,12 @@ class Restuarant{
         //decor properties
         this.decor = { 
             floor: {
+                age: 0,
                 pattern: "board",
                 color: "brown",
             },
             walls:{
+                age: 0,
                 pattern: "wallpaper1",
                 color: "blue",
             }
@@ -43,6 +45,10 @@ class Restuarant{
             $activeIngrediants: $('#active-ingredients'),
             $ingrediantsSelector: $('#ingrediants-selector'),
             $nameInput: $('#dish-name-input'),
+            $priceInput: $('#dish-price-input'),
+            $tablesTotal: $('#tables-total'),
+            $tablesFull: $('#tables-full'),
+            $tablesFullImage: $('#tables-full-image'),
         }
         this.awake();
     }
@@ -63,12 +69,17 @@ class Restuarant{
                 this.dish.removeIngrediant();
             }
         })
-        console.log(this.displayElements.$nameDisplay);
         this.displayElements.$nameInput.on('input keyup',(e) => {
             console.log("changing!");
             console.log(this.dish);
             const name = $(e.target).val();
             this.dish.setName(name);
+        });
+        this.displayElements.$priceInput.on('input keyup',(e) => {
+            console.log("changing!");
+            const price = $(e.target).val();
+            this.dish.setMenuPrice(price);
+            console.log(this.dish);
         });
         // this.displayElements.$activeIngrediants.on('dragover',(e)=>{
         //     e.preventDefault();
@@ -84,12 +95,15 @@ class Restuarant{
         $('#resturant-dropdown-button').on('click',()=>{
             this.showRestuarantBuilder();
         })
+        console.log(this.name);
+        this.updateName();
+            this.updateFinanceWindow();
+            this.updateTableDisplay();
+            this.newDish();
         if(!this.testMode){
             new PopUp("Choose a container to start");
         }
-        this.updateName();
-        this.updateFinanceWindow();
-        this.newDish();
+        
     }
     newDish(){
         this.dish = new Dish();
@@ -141,6 +155,13 @@ class Restuarant{
         if(this.properties.filledTables > 0){
             this.properties.filledTables--;
         }
+    }
+    updateTableDisplay(){
+        console.log("updating table display");
+        console.log(this.displayElements.$tablesTotal);
+        console.log(this.tables);
+        this.displayElements.$tablesTotal.text(this.properties.tables);
+        this.displayElements.$tablesFull.text(this.properties.filledTables);
     }
     profit(amt){
         this.properties.profit += amt;

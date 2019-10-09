@@ -80,10 +80,15 @@ class Dish{
         console.log(this.name);
         if(this.name && this.name.length){
             if(this.name.length < 5 || this.container === null || this.price === 0 ){
+                console.log("name not long enough");
                 return false
             }
             if(this.container === null){
                 console.log("no container");
+                return false;
+            }
+            if(this.price === 0){
+                console.log("no price");
                 return false;
             }
         } else {

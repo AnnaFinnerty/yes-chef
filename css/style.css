@@ -24,6 +24,9 @@ h4{
     font-size: 2vh;
 }
 
+input{
+    max-width: 20vw;
+}
 
 
 header{
@@ -35,6 +38,14 @@ header{
 
 #status-display{
     color: green;
+}
+
+#tables-total-image{
+    background-image: url('../images/table-dark.png');
+    width: 3vw;
+    height: 3vw;
+    background-size: contain;
+    background-repeat: no-repeat;
 }
 
 #menu-dropdown-button, #industry-menu-dropdown-button, #status-display,#date-container{
@@ -124,12 +135,22 @@ main{
 
 #dish-name-input{
     height: 6vh;
-    width: 50vw;
+    width: 40vw;
     border: 2px solid gray;
     text-align: center;
     font-size: 5vh;
     line-height: 6vh;
 }
+
+#dish-price-input{
+    height: 6vh;
+    width: 9vw;
+    border: 2px solid gray;
+    text-align: center;
+    font-size: 4vh;
+    line-height: 6vh;
+}
+
 #active-ingredients{
     border: 2px solid gray;
     width: 50vw;

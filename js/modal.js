@@ -103,10 +103,28 @@ class IndustryModal extends Modal{
 }
 
 class RestuarantModal extends Modal{
-    constructor(info,newGame){
+    constructor(styles,info,newGame){
         super();
         this.info = info;
         this.newGame = newGame;
+        this.setting = "easy";
+        this.settingsDefault = {
+            easy: {
+                profitDaily: 166,
+                profitMonthly: 5000,
+                tables: 10
+            },
+            medium: {
+                profitDaily: 100,
+                profitMonthly: 3000,
+                tables: 7
+            },
+            hard:{
+                profitDaily: 50,
+                profitMonthly: 1500,
+                tables: 5
+            }
+        }
         this.awake();
         this.buildWindow();
     }
@@ -131,10 +149,10 @@ class RestuarantModal extends Modal{
 
         $window.append('<h3>Restuarant Builder</h3>')
 
-        // if(this.newGame){
-        //     this.newResturantUI();
-        // }
-        //this.newResturantUI($window);
+         if(this.newGame){
+             this.newResturantUI();
+         }
+        this.newResturantUI($window);
 
         console.log(this.info);
         const $stars = $('<h3/>').text("***");    
@@ -145,9 +163,21 @@ class RestuarantModal extends Modal{
         $name.append($nameInput);
         $window.append($name);
 
-        $window.append($('<span>Style:</span>'));
-        const $styleInput = $('<select/>'); 
-        $window.append($styleInput);
+        
+        const $style = ($('<span>Style:</span>'));
+        const $styleInput = $('<select/>');
+        $style.append($styleInput);
+        $window.append($style);
+
+        const $open = $('<span>Open:</span>');
+        const $openInput = $('<input type="text"/>');
+        $open.append($openInput); 
+        $window.append($open);
+
+        const $close = $('<span>Close:</span>');
+        const $closeInput = $('<input type="text"/>'); 
+        $close.append($closeInput);
+        $window.append($close);
 
         for(let i = 0; i < this.info.styles.length;i++){
             const $option = $('<option/>').attr('data-id',this.info.styles[i]);
@@ -167,12 +197,21 @@ class RestuarantModal extends Modal{
     }
     newResturantUI($window){
         console.log(this.info);
+        const $settingsContainer = $('<div/>');
+        $window.append($settingsContainer);
+        this.buildSettingsUI($settingsContainer);
+    }
+    buildSettingsUI($settingsContainer){
+        const modeInfo = this.settingsDefault[this.setting];
+        console.log(modeInfo);
+        console.log(this.settingsDefault);
+        console.log(this.setting);
         const $financeRow = $('<div/>').addClass('row');
-        const $profitDaily = $('<span/>').text('Daily profit:' + this.info.properties.profitDaily);
+        const $profitDaily = $('<span/>').text('Daily profit:' + modeInfo.profitDaily);
               $financeRow.append($profitDaily);
-        const $profitTotal = $('<span/>').text('Total profit:' + this.info.properties.profitTotal);
+        const $profitTotal = $('<span/>').text('Total profit:' + modeInfo.profitTotal);
               $financeRow.append($profitTotal);
-        $window.append($financeRow);
+        $settingsContainer.append($financeRow);
 
         const modes = ['easy','medium','hard'];
         const $modeRow = $('<div/>').addClass('row');
@@ -180,6 +219,7 @@ class RestuarantModal extends Modal{
             const $modeButton = $('<button/>').text(modes[i]);
             $modeRow.append($modeButton);
         }
-        $window.append($modeRow);
+        $settingsContainer.append($modeRow);
+        
     }
 }

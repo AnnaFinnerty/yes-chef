@@ -5,7 +5,7 @@ $( document ).ready(function() {
 
 class App{
     constructor(){
-        this.testMode = true;
+        this.testMode = false;
         this.radio = new Radio();
         //this.modalController = new ModalController(this.radio);
         this.newGame();

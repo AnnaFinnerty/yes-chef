@@ -1,3 +1,9 @@
+class Trend{
+    constructor(){
+        
+    }
+}
+
 class Industry{
     constructor(radio){
         console.log("industry running");
@@ -86,8 +92,9 @@ class Industry{
         }
         console.log(this.restuarantStyles);
     }
-    nextVisitor(){
-
+    nextVisitors(){
+        console.log("creating new visitor");
+        this.vistorGenerator.createVisitor();
     }
     randomBetween(start,end){
         return Math.floor(Math.random()*(end-start))+start
