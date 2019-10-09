@@ -15,6 +15,12 @@ class Game{
         this.day = 0;
         this.hour = 0;
         this.timer = null;
+        this.awake();
+    }
+    awake(){
+        $('#pause-button').on('click',()=>{
+            this.pause();
+        })
     }
     start(){
         console.log("starting game");
@@ -54,6 +60,7 @@ class Game{
                     this.hour = 0;
                     if(this.day < 30){
                         this.day++;
+                        this.industry.updateTrends();
                     } else {
                         this.day = 0;
                         if(this.month < 12){

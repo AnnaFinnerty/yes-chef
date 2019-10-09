@@ -1,8 +1,3 @@
-class Trend{
-    constructor(){
-        
-    }
-}
 
 class Industry{
     constructor(radio){
@@ -12,27 +7,41 @@ class Industry{
         this.vistorGenerator = new VisitorGenerator(this.radio);
         this.totalCompetitors = 20;
         this.trends = {
-            priceSensitvityMax: 0,
-            priceSensitvityMin: 0,
-            priceSensitvity: 0,
-            exclusivityMax: 100,
-            exclusivityMin: 0,
-            exclusivity: 20,
-            exoticnessMax: 100,
-            exoticnessMin: 0,
-            exoticness: 20,
-            decorMax: 100,
-            decorMin: 0,
-            decor: 20,
-            menuSizeMax: 40,
-            menuSizeMin: 3,
-            menuSize: 8,
-            vegetarianMax: 75,
-            vegetarianMin: 0,
-            vegetarian: 5,
-            carnivoreMax: 75,
-            carnivoreMin: 0,
-            carnivore: 5, 
+            priceSensitivity: {
+                current: 5,
+                max: 100,
+                min: 0,
+            },
+            exclusivity: {
+                current: 5,
+                max: 100,
+                min: 0,
+            },
+            exoticness: {
+                current: 20,
+                max: 100,
+                min: 0,
+            },
+            decor: {
+                current: 20,
+                max: 100,
+                min: 0,
+            },
+            menuSize: {
+                current: 8,
+                max: 40,
+                min: 3,
+            },
+            vegetarian: {
+                current: 5,
+                max: 75,
+                min: 3,
+            },
+            carnivore: {
+                current: 5,
+                max: 75,
+                min: 0,
+            },
         }
         this.restuarantStyles = {
             "fast":{
@@ -91,6 +100,27 @@ class Industry{
             remainingCompetitors--;
         }
         console.log(this.restuarantStyles);
+    }
+    updateTrends(){
+        console.log("updating trends");
+        for(let t in this.trends){
+            const trend = this.trends[t];
+            const r = Math.random();
+            
+            //create a random number to determine if(and in what direction!) the trend will change
+            if(r < .3){
+                //trend going down
+                if(trend.current - 1 > trend.min){
+                    trend.current -= 1;
+                }
+
+            } else if (r > .7){
+                //trend going up
+                if(trend.current + 1 < trend.max){
+                    trend.current += 1;
+                }
+            }
+        }
     }
     nextVisitors(){
         console.log("creating new visitor");
