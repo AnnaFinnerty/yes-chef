@@ -13,7 +13,7 @@ class RestaurantBuilder{
             tables: 0,
             waitstaff: 0,
             profitTotal: 0,
-            profitMonth: 0,
+            profitDaily: 0,
             rating: 0,
             incomeHistoryDaily: [],
             incomeHistoryMonthly: []
@@ -24,7 +24,7 @@ class RestaurantBuilder{
             tables: 5,
             waitstaff: 2,
             profitTotal: 5000,
-            profitMonth: 500,
+            profitDaily: 50,
             rating: 3.5,
             incomeHistoryDaily: [],
             incomeHistoryMonthly: []
@@ -66,8 +66,8 @@ class RestaurantBuilder{
         const $financeRow = this.makejQueryElement(this.$window,'span',null,'row');
         const $profitTotal = this.makejQueryElement($financeRow,'span','total profit:');
         this.makejQueryElement($profitTotal,'span',this.properties.profitTotal);
-        const $profitMonth = this.makejQueryElement($financeRow,'span','monthly profit:');
-        this.makejQueryElement($profitMonth,'span',this.properties.profitMonth);
+        const $profitDaily = this.makejQueryElement($financeRow,'span','daily profit:');
+        this.makejQueryElement($profitMonth,'span',this.properties.profitDaily);
 
         const modes = ['easy','medium','hard'];
     }

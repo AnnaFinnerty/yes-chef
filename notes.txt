@@ -1,7 +1,8 @@
 
 
 BUGS
-++translate hours correctly before submitting to UI
++++prevent ingrdients from being added before container has been selected
+---translate hours correctly before submitting to UI
 
 
 !future ideas!

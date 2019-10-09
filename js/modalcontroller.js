@@ -21,11 +21,7 @@ class ModalController{
         this.loadEventListeners();
     }
     loadEventListeners(){
-        this.displayElements.$modal.on('click',(e)=>{
-            if(e.target.className === "modal" || e.target.className === "close-modal-button"){
-                this.closeModal();
-            }
-        })
+        
     }
     showPop(popType,message,buttons){
         //set active element to pop object

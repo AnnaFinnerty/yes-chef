@@ -14,36 +14,55 @@
         <nav class="row">
             <div class="column" id="status-display">
                 <h1 id="name-display"></h1>
-                <div id="finance-display">
-                    <div id="profit-display">$0</div>
+                <div class="column" id="finance-display">
+                    <span class="profit-element" id="profit-daily">0</span>
+                    <span class="profit-element" id="profit-total">0</span>
                 </div>
                 <div id="tables-display"></div>
             </div>
+            <div class="dropdown-button" id="resturant-dropdown-button">
+                resturant
+            </div>
             <div class="dropdown-button" id="menu-dropdown-button">
                 menu
-                <div id="menu-dropdown"></div>
             </div>
             <div class="dropdown-button" id="industry-menu-dropdown-button">
                 industry
-                <div class="dropdown" id="industry-dropdown"></div>
             </div>
-            <div class="row" id="date-container">
-                <h4 id="date-hour"></h4><h4>/</h4>
-                <div class="row">
-                    <h4 id="date-day"></h4><h4>/</h4>
-                    <h4 id="date-month"></h4><h4>/</h4>
-                    <h4 id="date-year"></h4>
+            <div class="column" id="date-container">
+                <div class="column">
+                    <span class="time-element" id="time-display"></span>
+                    <div class="time-element" id="date-display"></div>
                 </div>
                 
+                <div class="row time-element">
+                    <span id="open-display">OPEN</span>
+                    <span id="opening-hours-display">5:00pm-10pm</span>
+                </div>
             </div>
         </nav>
     </header>
     <main class="row">
         <aside id="ingrediants-sidebar">
-            <div class="scrollY" id="ingrediants-selector"></div>
             <div id="ingrediants-tabs"></div>
+            <div class="scrollY" id="ingrediants-selector"></div>
         </aside>
-        <div id="view-window">view-window</div>
+        <div id="view-window">
+            <div class="wall">
+                <div class="row center-flex">
+                    <input id="dish-name-input" type="text" placeholder="name your dish!"/>
+                </div>
+                <div id="active-ingredients">
+                    
+                </div>
+                <button id="save-dish-button">save</button>
+            </div>
+            <div class="floor">
+                <div class = "table">
+                    <div id="active-dish"></div>
+                </div>
+            </div>
+        </div>
         <aside id="reviews-sidebar">
             <h2>reviews</h2>
             <span id="stars-display">***</span>
@@ -51,17 +70,9 @@
         </aside>
     </main>
     <footer>by Anna Finnerty</footer>
-    <div class="modal hidden">
-        <div class="pop-up hidden">
-            <button class="close-modal-button">X</button>
-            <div id="pop-up-text"></div>
-        </div>
-        <div class="modal-window hidden">
-            <button class="close-modal-button">X</button>
-            <div id="modal-window-text"></div>
-        </div>
-    </div>
+    <div class="modal hidden"></div>
     <script src="js/radio.js"></script>
+    <script src="js/modal.js"></script>
     <script src="js/modalcontroller.js"></script>
     <script src="js/ingredientsidebar.js"></script>
     <script src="js/reviewsidebar.js"></script>

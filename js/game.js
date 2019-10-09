@@ -27,7 +27,8 @@ class Game{
     }
     createRestuarant(properties){
         console.log("creating resturant");
-        this.restaurant = new Restuarant(this.radio);
+        const stylesList = this.industry.getStylesList();
+        this.restaurant = new Restuarant(this.radio,stylesList,this.testMode);
         console.log(this.restaurant);
         this.startTimer();
     }
@@ -52,10 +53,8 @@ class Game{
                     }
                 }
                 const hourToDisplay = this.hour < 10 ? "0" + this.hour + "00" : this.hour + "00";
-                $('#date-hour').text(hourToDisplay);
-                $('#date-day').text(this.day);
-                $('#date-month').text(this.month);
-                $('#date-year').text(this.year);
+                $('#time-display').text(hourToDisplay);
+                $('#date-display').text(this.day + "/" + this.month + "/" + this.year);
                 this.update();
            },this.lengthOfHour)
         }

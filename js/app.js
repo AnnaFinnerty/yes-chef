@@ -7,8 +7,7 @@ class App{
     constructor(){
         this.testMode = true;
         this.radio = new Radio();
-        this.ingrediantsDB = new Ingrediants(this.radio);
-        //this.uiController = new UIController(this.radio);
+        //this.modalController = new ModalController(this.radio);
         this.newGame();
     }
     newGame(){
