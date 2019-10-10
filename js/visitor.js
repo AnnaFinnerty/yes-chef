@@ -13,12 +13,7 @@ class Visitor{
         this.hasAllergy = allergy;
         this.willComeBack = false; 
     }
-    rate(dish){
-        const rating = 75;
-        return rating
-    }
     findDish(menu){
-
         const choices = [];
         for(let i in menu){
             //evaluate menu options
@@ -28,10 +23,18 @@ class Visitor{
                     choices.push(item);
                 }
             } else {
-
+                choices.push(item);
             }
         }
+        console.log(choices);
+        const r = Math.floor(Math.random()*choices.length);
+        const dish = choices[r];
+        console.log(dish);
         const rating = this.rate(dish);
+        return rating
+    }
+    rate(dish){
+        const rating = 75;
         return rating
     }
 }

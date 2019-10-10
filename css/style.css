@@ -316,6 +316,10 @@ footer{
     justify-content: center;
 }
 
+.auto-margin{
+    margin: 0 auto;
+}
+
 .plate{
     margin: 0 auto;
     background-image: url('../images/plate.png');

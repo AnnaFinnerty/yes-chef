@@ -97,16 +97,16 @@ class Restuarant{
         })
         console.log(this.name);
         this.updateName();
-            this.updateFinanceWindow();
-            this.updateTableDisplay();
-            this.newDish();
+        this.updateFinanceWindow();
+        this.updateTableDisplay();
+        //this.newDish();
+        
+    }
+    newDish(){
         if(this.tutorial && !this.testMode){
             //new PopUp("Choose a container to start");
             this.tutorial = false;
         }
-        
-    }
-    newDish(){
         this.dish = new Dish();
         for(let i = 0; i < this.containers.length; i++){
             const $container = $('<div/>').addClass('ingrediant ingrediant-active');
@@ -176,9 +176,9 @@ class Restuarant{
         $('#profit-daily').text("Daily$: " + this.properties.profitDaily);
         $('#profit-total').text("Total$:" + this.properties.profitTotal);
     }
-    showRestuarantBuilder(){
+    showRestuarantBuilder(newGame){
         console.log("showing resturant builder");
-        const modal = new RestuarantModal(false,this);
+        const modal = new RestuarantModal(this,newGame);
     }
     validator(){
 

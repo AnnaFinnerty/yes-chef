@@ -12,10 +12,7 @@ class VisitorGenerator{
         const waveSize = (hour) * resturant.properties.rating;
         console.log('wavesize',waveSize);
         //simulate visitor resturant choice
-        for(let t in trends){
-            const current = trends[t]['current'];
-            console.log(current);
-        }
+        
     }
     createVisitor(hour,stars,trends){
         console.log(trends);

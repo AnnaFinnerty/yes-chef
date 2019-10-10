@@ -5,6 +5,7 @@ class Industry{
         this.radio = radio;
         this.radio.addSubscriber("Industry",this.recieve.bind(this));
         this.vistorGenerator = new VisitorGenerator(this.radio);
+        this.dialogueGenerator = new DialogueGenerator();
         this.returningVisitors = [];
         this.totalCompetitors = 20;
         this.avgMealCost = 10;
@@ -60,10 +61,10 @@ class Industry{
             console.log("industry click")
             this.showIndustryModal();
         })
-        this.placeCompetitors();
+        this.generateCompetitors();
     }
-    placeCompetitors(){
-        console.log("placing competitors")
+    generateCompetitors(){
+        console.log("generating competitors")
         let remainingCompetitors = this.totalCompetitors;
         const styles = Object.keys(this.restuarantStyles);
         while(remainingCompetitors > 0){
@@ -73,6 +74,9 @@ class Industry{
             remainingCompetitors--;
         }
         console.log(this.restuarantStyles);
+    }
+    industryAverages(){
+        
     }
     updateTrends(){
         console.log("updating trends");

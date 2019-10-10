@@ -26,12 +26,13 @@ class Game{
         console.log("starting game");
         this.createRestuarant();
     }
-    createRestuarant(properties){
+    createRestuarant(){
         console.log("creating resturant");
         const stylesList = this.industry.getStylesList();
         this.restaurant = new Restuarant(false,stylesList,this.testMode);
-        new RestuarantModal(this.restaurant,true);
-        this.paused = true;
+        this.restaurant.showRestuarantBuilder();
+        this.paused = false;
+        this.startTimer();
     }
     startTimer(){
         if(!this.paused){

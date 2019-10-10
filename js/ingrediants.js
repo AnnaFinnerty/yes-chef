@@ -96,13 +96,17 @@ class Ingrediants{
             console.log(items[i]);
             const $item = $('<div/>').attr('data-id',items[i].id);
                   $item.attr('data-class',category);
+                  $item.text(items[i].display);
+                  $item.addClass("ingrediant ingrediant-sidebar");
+            const $image = $('<img/>').addClass('ingrediant');
+                  $image.attr('src',"./images/" + items[i].imgSelect);
+            $item.append($image);
                   //$item.addClass(category);
                  // $item.attr("draggable",true);
                 //   $item.on("drag",(e)=>{
                 //       console.log(e);
                 //       e.dataTransfer.setData('id', items[i].id);})
-                  $item.text(items[i].display);
-                  $item.addClass("ingrediant ingrediant-sidebar");
+                  
             this.displayElements.$ingrediantsSelector.append($item);
         }
     }
@@ -134,8 +138,8 @@ const tempIngrediants = {
             cuisines: ['American','bistro'],
             methods: ['slice', 'chop', 'dice'],
             applications: ['raw','baked'],
-            imgCooked:"",
-            imgSelect:"",
+            imgCooked:"apple_whole.png",
+            imgSelect:"apple_whole.png",
         },
     },
     vegetables:{
@@ -151,8 +155,8 @@ const tempIngrediants = {
             cuisines: ['American','bistro'],
             methods: ['shred'],
             applications: ['raw'],
-            imgCooked:"",
-            imgSelect:"",
+            imgCooked:"lettuce.png",
+            imgSelect:"lettuce.png",
         },
         kale:{
             id: 'kale',
@@ -166,8 +170,8 @@ const tempIngrediants = {
             cuisines: ['American','bistro'],
             methods: ['shred'],
             applications: ['raw'],
-            imgCooked:"",
-            imgSelect:"",
+            imgCooked:"lettuce.png",
+            imgSelect:"lettuce.png",
         },
         tomato:{
             id: 'tomato',
@@ -181,8 +185,8 @@ const tempIngrediants = {
             cuisines: ['American','bistro'],
             methods: ['shred'],
             applications: ['raw'],
-            imgCooked:"",
-            imgSelect:"",
+            imgCooked:"tomato_slice.png",
+            imgSelect:"tomato.png",
         },
         onion:{
             id: 'onion',
@@ -196,8 +200,8 @@ const tempIngrediants = {
             cuisines: ['American','bistro'],
             methods: ['shred'],
             applications: ['raw'],
-            imgCooked:"",
-            imgSelect:"",
+            imgCooked:"onion_whole.png",
+            imgSelect:"onion_whole.png",
         },
     },
     grains:{
