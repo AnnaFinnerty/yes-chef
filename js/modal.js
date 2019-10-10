@@ -42,9 +42,10 @@ class PopUp extends Modal{
 }
 
 class MenuModal extends Modal{
-    constructor(menu){
+    constructor(restuarant){
         super();
-        this.menu = menu;
+        this.restuarant = restuarant;
+        this.menu = this.restuarant.menu;
         this.buildMenu();
     }
     
@@ -62,10 +63,14 @@ class MenuModal extends Modal{
         for(let item in this.menu){
             const info = this.menu[item];
             console.log(info);
-            const $menuItem = $('<span/>').attr('data-id',this.menu[item].id);
-            $menuItem.text(this.menu[item].name);
+            const $menuItem = $('<div/>').attr('data-id',this.menu[item].id).addClass("row");
+            const $menuItemName = $('<span/>').attr('data-id',this.menu[item].id);
+            $menuItemName.text(this.menu[item].name);
+            $menuItem.append($menuItemName);
             const price = $('<span/>').text("$" + info.menuPrice);
             $menuItem.append(price);
+            const wholesale = $('<span/>').text("(" + info.wholesalePrice + ")");
+            $menuItem.append(wholesale );
             $menu.append($menuItem);
         }
         $(".modal").append($menu);

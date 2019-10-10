@@ -8,7 +8,8 @@ class DialogueGenerator{
     }
     
     suggestRestuarantName(){
-
+        const firstWords = [];
+        const secondWords = [];
     }
 
     recieve(request,print){

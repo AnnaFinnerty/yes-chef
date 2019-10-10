@@ -45,7 +45,7 @@ class Menu{
     }
     showMenu(){
         console.log("showing menu!");
-        const modal = new MenuModal(this.menu);
+        const modal = new MenuModal(this);
     }
     defaultMenu(){
         const salad = new Dish(true,"Simple Salad","salad",4,"bowl");
@@ -70,6 +70,48 @@ class Menu{
                     applications: ['raw']
                 })
             salad.addIngredient({
+                id: 'onion',
+                display: 'onion',
+                price: .1,
+                calories: 20,
+                classes: ['vegetable'],
+                cuisines: ['American','bistro'],
+                methods: ['shred'],
+                applications: ['raw']
+            })
+        this.addDish(salad);
+        const burger = new Dish(true,"Basic Burger","sandwhich",7,"plate");
+              burger.addIngredient({
+                    id: 'ground_beef',
+                    display: 'lettuce',
+                    price: .05,
+                    calories: 20,
+                    classes: ['fruit'],
+                    cuisines: ['American','bistro'],
+                    methods: ['shred'],
+                    applications: ['raw']
+              })
+              burger.addIngredient({
+                id: 'lettuce',
+                display: 'lettuce',
+                price: .05,
+                calories: 20,
+                classes: ['fruit'],
+                cuisines: ['American','bistro'],
+                methods: ['shred'],
+                applications: ['raw']
+            })
+            burger.addIngredient({
+                    id: 'tomato',
+                    display: 'tomato',
+                    price: .2,
+                    calories: 20,
+                    classes: ['fruit'],
+                    cuisines: ['American','bistro'],
+                    methods: ['shred'],
+                    applications: ['raw']
+                })
+            burger.addIngredient({
                 id: 'onion',
                 display: 'onion',
                 price: .1,

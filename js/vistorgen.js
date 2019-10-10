@@ -1,13 +1,20 @@
 class VisitorGenerator{
-    constructor(radio){
-        this.radio = radio;
-        this.radio.addSubscriber("VisitorGenerator",this.recieve.bind(this));
+    constructor(){
+        //this.radio = radio;
+        //this.radio.addSubscriber("VisitorGenerator",this.recieve.bind(this));
         console.log("visitor gen running");
     }
-    createVisitor(trend){
+    createVisitor(hour,stars,trends){
+        console.log(trends);
+        //evaluate menu first
+        const pop = (hour*.1) * stars;
         const first = this.randomFromArray(firstNames);
         const last = this.randomFromArray(lastNames);
-        const visitor = new Visitor(first + " " + last);
+        const trendSensitivity = Math.floor(Math.random()*100)/100;
+        const vegetarian = Math.random() < trends.vegetarian ? true : false;
+        const carnivore = !vegetarian && Math.random() < trends.carnivore ? true : false;
+        const allergy = Math.random() < .1 ? this.randomFromArray(allergies) : null;
+        const visitor = new Visitor(trendSensitivity, first + " " + last,vegetarian,carnivore,allergy);
         console.log(visitor);
     }
     randomFromArray(arr){
@@ -28,3 +35,5 @@ class VisitorGenerator{
 const firstNames = ["Annie","Brad","Cierra","Jordan","Joseph","Franco","Lyaysan","Micah","Mike","Orrin","Tyler","Walter","George","Josh"]
 
 const lastNames = ["Finnerty","Donakowski","Nease","Bruner","Benbella","Aguilar","Glick","Wierenga","Cardarelli","Johnson","Walker","Sylvester","Chapman","Vinlove"]
+
+const allergies = ["shellfish","milk"];

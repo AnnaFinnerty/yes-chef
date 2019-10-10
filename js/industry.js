@@ -124,7 +124,8 @@ class Industry{
     }
     nextVisitors(){
         console.log("creating new visitor");
-        this.vistorGenerator.createVisitor();
+        console.log(this.trends);
+        this.vistorGenerator.createVisitor(this.trends);
     }
     randomBetween(start,end){
         return Math.floor(Math.random()*(end-start))+start

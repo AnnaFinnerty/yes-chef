@@ -8,7 +8,7 @@ class Game{
         this.eventManager = new EventManager(this.radio);
         this.dialogueGenerator = new DialogueGenerator(this.radio);
         this.restaurant = {};
-        this.lengthOfHour = testMode ? 500: 100;
+        this.lengthOfHour = testMode ? 500: 1000;
         this.paused = true;
         this.year = 0;
         this.month = 0;

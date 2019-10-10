@@ -123,7 +123,6 @@ main{
 }
 
 .wall{
-    background: purple;
     height: 100vh;
 }
 
@@ -299,6 +298,14 @@ footer{
     flex-direction: column;
     flex-wrap: nowrap;
     height: 100%;
+}
+
+.scrollX{
+    overflow-x: scroll;
+}
+
+.scrollY{
+    overflow-y: scroll;
 }
 
 .hidden{

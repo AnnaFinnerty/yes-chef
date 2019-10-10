@@ -12,6 +12,9 @@ class Dish{
         // this container will determine shown image 
         this.ingrediants = [];
         this.avgRating = 0;
+        this.exoticness = 0;
+        this.vegetarian = true;
+        this.vegan = true;
         this.$dishDisplay = $('#active-dish');
         this.awake();
     }
@@ -23,14 +26,21 @@ class Dish{
     addIngredient(ingrediantInfo){
         this.ingrediants.push(ingrediantInfo);
         this.wholesalePrice += ingrediantInfo.price;
+        this.exoticness += ingrediantInfo.exoticness;
+        if(!ingrediantInfo.vegetarian){
+            this.vegetarian = false;
+        }
+        if(!ingrediantInfo.vegan){
+            this.vegetarian = false;
+        }
         if(!this.loadOnly){
             this.displayDish();
         }
     }
     removeIngredient(i){
         const ingrediant = this.ingrediants[i];
-        const price = ingrediant.wholesalePrice;
-        this.wholesalePrice -= price;
+        this.wholesalePrice -= ingrediant.wholesalePrice;
+        this.exoticness -= ingrediantInfo.exoticness;
         this.ingrediants.splice(i,1);
     }
     addContainer(containerName){
