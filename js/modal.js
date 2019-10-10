@@ -108,11 +108,13 @@ class IndustryModal extends Modal{
 }
 
 class RestuarantModal extends Modal{
-    constructor(styles,info,newGame){
+    constructor(restuarant,newGame){
         super();
-        this.info = info;
+        this.restuarant = restuarant;
+        this.styles = restuarant.styles;
         this.newGame = newGame;
         this.setting = "easy";
+        this.$window = null;
         this.settingsDefault = {
             easy: {
                 profitDaily: 166,
@@ -141,8 +143,12 @@ class RestuarantModal extends Modal{
     }
     buildWindow(){
         console.log("building resturant window");
+        console.log(this.restuarant);
         const $window = $('<div/>').addClass('window');
         $(".modal").append($window);
+        
+        //store window object to be accessed by other properties
+        this.$window = $window;
 
         const $row = $('<div/>').addClass("row");
         const $closeButton = $('<button>X</button>').addClass('close-modal-button');
@@ -159,7 +165,6 @@ class RestuarantModal extends Modal{
          }
         this.newResturantUI($window);
 
-        console.log(this.info);
         const $stars = $('<h3/>').text("***");    
         $window.append($stars);
 
@@ -184,17 +189,17 @@ class RestuarantModal extends Modal{
         $close.append($closeInput);
         $window.append($close);
 
-        for(let i = 0; i < this.info.styles.length;i++){
-            const $option = $('<option/>').attr('data-id',this.info.styles[i]);
-                  $option.text(this.info.styles[i]);
+        for(let i = 0; i < this.styles.length;i++){
+            const $option = $('<option/>').attr('data-id',this.styles[i]);
+                  $option.text(this.styles[i]);
             $styleInput.append($option);
         }
         
-        const $tables = $('<h3/>').text("Tables:"+this.info.properties.tables);
+        const $tables = $('<h3/>').text("Tables:"+this.restuarant.tables);
         //add buttons to add/decrease tables
         $window.append($tables);
 
-        const $waitstaff = $('<h3/>').text("Waitstaff:"+this.info.properties.waitstaff);
+        const $waitstaff = $('<h3/>').text("Waitstaff:"+this.restuarant.waitstaff);
         $window.append($waitstaff);
 
         const $save = $('<button/>').text("SAVE");
@@ -203,7 +208,7 @@ class RestuarantModal extends Modal{
     newResturantUI($window){
         console.log(this.info);
         const $settingsContainer = $('<div/>');
-        $window.append($settingsContainer);
+        this.$window.append($settingsContainer);
         this.buildSettingsUI($settingsContainer);
     }
     buildSettingsUI($settingsContainer){

@@ -68,8 +68,8 @@ class Industry{
         const styles = Object.keys(this.restuarantStyles);
         while(remainingCompetitors > 0){
             const randomStyle = styles[Math.floor(Math.random()*styles.length)];
-            const randomResturant = new Restuarant(null,null,this.testMode,"Random Name");
-            this.restuarantStyles[randomStyle].push(new Restuarant(null,null,this.testMode,))
+            //const randomResturant = new Restuarant(true,null,this.testMode,"Random Name");
+            //this.restuarantStyles[randomStyle].push(randomResturant);
             remainingCompetitors--;
         }
         console.log(this.restuarantStyles);

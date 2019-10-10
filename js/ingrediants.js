@@ -1,9 +1,7 @@
 class Ingrediants{
-    constructor(radio){
-        this.radio = radio;
+    constructor(){
         console.log("ingrediants running");
         this.source = tempIngrediants;
-        this.radio.addSubscriber("Ingrediants",this.recieve.bind(this));
         this.requestPaths = {
             returnIngrediantCategories: this.getCategories.bind(this),
             returnCategoryList: this.getCategory.bind(this),

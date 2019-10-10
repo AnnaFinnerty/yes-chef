@@ -1,8 +1,6 @@
 class Restuarant{
-    constructor(radio,styles, testMode, name = "Corner Cafe",style = "cafe", openHour = 15, closeHour = 20, tables = 5,waitstaff = 2,profitTotal = 5000,profitDaily = 50, rating = 3.5){
+    constructor(fake,styles, testMode, name = "Corner Cafe",style = "cafe", openHour = 15, closeHour = 20, tables = 5,waitstaff = 2,profitTotal = 5000,profitDaily = 50, rating = 3.5){
         console.log("new resturant created");
-        this.radio = radio;
-        this.radio.addSubscriber("Resturant",this.recieve.bind(this));
         this.testMode = testMode;
         this.ingrediants = new Ingrediants(this.radio);
         this.styles = styles;
@@ -25,7 +23,7 @@ class Restuarant{
         this.menu = new Menu();
         this.containers = ["plate", "bowl"];
         this.activeDish = null;
-
+        this.tutorial = true;
         //decor properties
         this.decor = { 
             floor: {
@@ -50,7 +48,9 @@ class Restuarant{
             $tablesFull: $('#tables-full'),
             $tablesFullImage: $('#tables-full-image'),
         }
-        this.awake();
+        if(!fake){
+            this.awake();
+        }
     }
     awake(){
         this.displayElements.$ingrediantsSelector.on('click',(e)=>{
@@ -100,8 +100,9 @@ class Restuarant{
             this.updateFinanceWindow();
             this.updateTableDisplay();
             this.newDish();
-        if(!this.testMode){
-            new PopUp("Choose a container to start");
+        if(this.tutorial && !this.testMode){
+            //new PopUp("Choose a container to start");
+            this.tutorial = false;
         }
         
     }
@@ -177,7 +178,7 @@ class Restuarant{
     }
     showRestuarantBuilder(){
         console.log("showing resturant builder");
-        const modal = new RestuarantModal(this);
+        const modal = new RestuarantModal(false,this);
     }
     validator(){
 

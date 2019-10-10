@@ -7,7 +7,7 @@ class Game{
         this.industry = new Industry(this.radio);
         this.eventManager = new EventManager(this.radio);
         this.dialogueGenerator = new DialogueGenerator(this.radio);
-        this.restaurant = {};
+        this.restaurant = null;
         this.lengthOfHour = testMode ? 500: 1000;
         this.paused = true;
         this.year = 0;
@@ -24,21 +24,14 @@ class Game{
     }
     start(){
         console.log("starting game");
-        this.radio.addSubscriber("Game",this.recieve.bind(this));
-        if(!this.restaurant){
-            const stylesList = this.industry.getStylesList();
-            new RestuarantModal(this.radio,stylesList);
-        } else {
-            this.createRestuarant();
-        }
+        this.createRestuarant();
     }
     createRestuarant(properties){
         console.log("creating resturant");
         const stylesList = this.industry.getStylesList();
-        this.restaurant = new Restuarant(this.radio,stylesList,this.testMode);
-        console.log(this.restaurant);
-        this.paused = false;
-        this.startTimer();
+        this.restaurant = new Restuarant(false,stylesList,this.testMode);
+        new RestuarantModal(this.restaurant,true);
+        this.paused = true;
     }
     startTimer(){
         if(!this.paused){
