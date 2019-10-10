@@ -1,23 +1,31 @@
 class Visitor{
-    constructor(trendSensitivity, name,vegetarian,carnivore,allergy,priceSensitvity,exclusivity,exoticness,decor,menuSize){
+    constructor(menu,trendSensitivity, name,vegetarian,carnivore,allergy,priceSensitvity,numOfIngrediants, menuSize){
         console.log("new visitor created");
+        this.menu = menu;
         this.trendSensitivity = trendSensitivity;
         this.name = name;
         this.priceSensitvity = priceSensitvity;
-        this.exclusivity = exclusivity;
-        this.exoticness = exoticness;
-        this.decor = decor;
+        this.numOfIngrediants = numOfIngrediants;
+        // this.exclusivity = exclusivity;
+        // this.exoticness = exoticness;
+        // this.decor = decor;
         this.menuSize = menuSize;
         this.isVegetarian = vegetarian;
         this.isCarnivore = carnivore;
         this.hasAllergy = allergy;
-        this.willComeBack = false; 
+        this.willComeBack = false;
+        this.report = {
+            rating: 0,
+            dish: null,
+        }
+        this.findDish();
     }
-    findDish(menu){
+    findDish(){
+        console.log("finding dish!");
         const choices = [];
-        for(let i in menu){
-            //evaluate menu options
-            const item = menu[i];
+        //evaluate menu options
+        for(let i in this.menu.menu){
+            const item = this.menu.menu[i];
             if(this.vegetarian){
                 if(item.vegetarian || item.vegan){
                     choices.push(item);
@@ -26,15 +34,13 @@ class Visitor{
                 choices.push(item);
             }
         }
-        console.log(choices);
         const r = Math.floor(Math.random()*choices.length);
         const dish = choices[r];
-        console.log(dish);
-        const rating = this.rate(dish);
-        return rating
+        this.report.dish = dish;
+        this.report.rating = this.rate(dish);
     }
     rate(dish){
-        const rating = 75;
+        const rating = Math.floor(Math.random()*5);
         return rating
     }
 }

@@ -40,7 +40,7 @@ class Game{
                // increment clock in awkwardly written way
                 if(this.hour < 24){
                     this.hour++;
-                    this.industry.nextVisitors(this.restaurant,this.hour);
+                    //this.industry.nextVisitors(this.restaurant,this.hour);
                     //toggle open/closed signs at selected hours
                     if(this.hour === this.restaurant.properties.openHour){
                         this.open();
@@ -55,6 +55,7 @@ class Game{
                     this.hour = 0;
                     if(this.day < 30){
                         this.day++;
+                        //update industry trends once a day
                         this.industry.updateTrends();
                     } else {
                         this.day = 0;
@@ -66,6 +67,7 @@ class Game{
                         }
                     }
                 }
+                //display time in header
                 const hourToDisplay = this.hour < 10 ? "0" + this.hour + "00" : this.hour + "00";
                 $('#time-display').text(hourToDisplay);
                 $('#date-display').text(this.day + "/" + this.month + "/" + this.year);
@@ -80,7 +82,8 @@ class Game{
         $('#open-display').removeClass("closed").addClass("open");
     }
     stayOpen(){
-        this.industry.nextVisitors(this.restaurant,this.hour);
+        const reports = this.industry.nextVisitors(this.restaurant,this.hour);
+        this.restaurant.recieveReport(reports);
     }
     close(){
         $('#open-display').text("CLOSED")

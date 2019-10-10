@@ -7,6 +7,7 @@ class Industry{
         this.vistorGenerator = new VisitorGenerator(this.radio);
         this.dialogueGenerator = new DialogueGenerator();
         this.returningVisitors = [];
+        this.competitors = [];
         this.totalCompetitors = 20;
         this.avgMealCost = 10;
         this.trends = {
@@ -46,6 +47,7 @@ class Industry{
                 min: 0,
             },
         }
+        this.industryAverages = {};
         this.restuarantStyles = {
             "fast":[],
             "cafe":[],
@@ -68,15 +70,37 @@ class Industry{
         let remainingCompetitors = this.totalCompetitors;
         const styles = Object.keys(this.restuarantStyles);
         while(remainingCompetitors > 0){
+            const randomName = this.dialogueGenerator.suggestRestuarantName();
             const randomStyle = styles[Math.floor(Math.random()*styles.length)];
-            //const randomResturant = new Restuarant(true,null,this.testMode,"Random Name");
-            //this.restuarantStyles[randomStyle].push(randomResturant);
+            const randomOpen = Math.floor(Math.random()*5)+9;
+            const randomClose = Math.floor(Math.random()*5)+18;
+            const randomTables = Math.floor(Math.random()*5)+5;
+            const randomWaitstaff = randomTables-2;
+            const randomStars = Math.floor(Math.random()*5);
+            const randomDecor = Math.floor(Math.random()*10);
+            const randomResturant = new FakeRestuarant(randomName,randomStyle,randomOpen,randomClose,randomTables,randomWaitstaff,0,0,randomStars,randomDecor);
+            this.competitors.push(randomResturant);
             remainingCompetitors--;
         }
-        console.log(this.restuarantStyles);
+        this.generateIndustryAverages();
     }
-    industryAverages(){
-        
+    generateIndustryAverages(){
+        const averages = {};
+        for(let i = 0; i < this.competitors.length; i++){
+            const competitorProps = this.competitors[i]['properties'];
+            for(let prop in competitorProps){
+                if(prop !== "name" && prop !== "style" && prop !== "filledTables"){
+                    if(!averages[prop]){
+                        averages[prop] = 0
+                    }
+                    averages[prop] += competitorProps[prop];
+                }
+            }
+        }
+        for(let a in averages){
+            averages[a] = averages[a]/this.competitors.length;
+        }
+        this.industryAverages = averages;
     }
     updateTrends(){
         console.log("updating trends");
@@ -102,7 +126,8 @@ class Industry{
     nextVisitors(restaurant,hour){
         console.log("creating new visitor");
         console.log(this.trends);
-        this.vistorGenerator.createVisitorWave(restaurant,this.trends,hour);
+        const reports = this.vistorGenerator.createVisitorWave(restaurant,this.trends,this.industryAverages,hour);
+        return reports
     }
     randomBetween(start,end){
         return Math.floor(Math.random()*(end-start))+start

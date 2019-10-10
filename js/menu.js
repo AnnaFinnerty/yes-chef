@@ -28,6 +28,7 @@ class Menu{
         
     }
     removeDish(dishID){
+        console.log("removing dish");
         if(this.menu[dishID]){
             this.menuLength -= 1;
             delete this.menu[dishID]

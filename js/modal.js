@@ -62,7 +62,6 @@ class MenuModal extends Modal{
         $menu.append($('<h2>MENU</h2>'));
         for(let item in this.menu){
             const info = this.menu[item];
-            console.log(info);
             const $menuItem = $('<div/>').attr('data-id',this.menu[item].id).addClass("row");
             const $menuItemName = $('<span/>').attr('data-id',this.menu[item].id);
             $menuItemName.text(this.menu[item].name);
@@ -72,6 +71,10 @@ class MenuModal extends Modal{
             const wholesale = $('<span/>').text("(" + info.wholesalePrice + ")");
             $menuItem.append(wholesale );
             const removeButton = $('<button>X</button>');
+                  removeButton.on('click',()=>{
+                      console.log(this.restuarant);
+                      this.menu.removeDish(this.menu[item].id);
+                  })
             $menuItem.append(removeButton);
 
             $menu.append($menuItem);
@@ -81,9 +84,9 @@ class MenuModal extends Modal{
 }
 
 class IndustryModal extends Modal{
-    constructor(info){
+    constructor(industry){
         super();
-        this.info = info;
+        this.industry = industry;
         this.awake();
         this.buildWindow();
     }
@@ -95,6 +98,7 @@ class IndustryModal extends Modal{
     }
     buildWindow(){
         console.log("building industry window");
+        console.log(this.industry);
         const $window = $('<div/>').addClass('window');
         $(".modal").append($window);
 
@@ -107,6 +111,20 @@ class IndustryModal extends Modal{
               $window.append($row);
 
         $window.append('<h3>Resturant News Center</h3>')
+        $window.append('<h4>Industry Averages</h4>') 
+        for(let i in this.industry.industryAverages){
+            console.log(i);
+            const $stat = $('<span/>').text(i + ": " + this.industry.industryAverages[i]);
+            $window.append($stat);
+        }
+
+        $window.append('<h4>Competitors</h4>')
+        for(let i = 0; i < this.industry.competitors.length; i++){
+            const competitorInfo = this.industry.competitors[i].properties;
+            const $competitor = $('<span/>').text(competitorInfo.name);
+                  $competitor.append($('<span/>').text(competitorInfo.rating))
+            $window.append($competitor);
+        }
     }
 }
 
@@ -149,6 +167,12 @@ class RestuarantModal extends Modal{
         console.log(this.restuarant);
         const $window = $('<div/>').addClass('window');
         $(".modal").append($window);
+
+        $window.on('click',(e)=>{
+            const tag = e.target.getAttribute('data-class');
+            console.log(tag);
+            this.restuarant.updateProp();
+        })
         
         //store window object to be accessed by other properties
         this.$window = $window;
@@ -171,14 +195,14 @@ class RestuarantModal extends Modal{
         $window.append($stars);
 
         const $name = $('<h3/>').text("Name:");
-        const $nameInput = $('<input type="text">').attr('data-id','name');
+        const $nameInput = $('<input type="text">').attr('data-class','prop').attr('data-id','name');
               $nameInput.attr('placeholder',this.restuarant.properties.name);
         $name.append($nameInput);
         $window.append($name);
 
         
         const $style = ($('<span>Style:</span>'));
-        const $styleInput = $('<select/>');
+        const $styleInput = $('<select/>').attr('data-class','prop').attr('data-id','style');
         $style.append($styleInput);
         $window.append($style);
 
@@ -189,24 +213,27 @@ class RestuarantModal extends Modal{
         }
 
         const $open = $('<span>Open:</span>');
-        const $openInput = $('<input type="text"/>');
-              $openInput.attr('data-id','openHour');
+        const $openInput = $('<input type="text"/>').attr('data-class','prop').attr('data-id','openHour');
               $openInput.attr('placeholder',this.restuarant.properties.openHour);
         $open.append($openInput); 
         $window.append($open);
 
         const $close = $('<span>Close:</span>');
-        const $closeInput = $('<input type="text"/>'); 
+        const $closeInput = $('<input type="text"/>').attr('data-class','prop').attr('data-id','closeHour');
               $closeInput.attr('placeholder',this.restuarant.properties.closeHour);
-              $closeInput.attr('data-id','closeHour');
         $close.append($closeInput);
         $window.append($close);
         
-        const $tables = $('<h3/>').text("Tables:"+this.restuarant.properties.tables);
-        //add buttons to add/decrease tables
+        const $tables = $('<h3/>').text("Tables:");
+        const $tablesInput = $('<input type="text"/>').attr('data-class','prop').attr('data-id','tables');
+        $tablesInput.attr('placeholder',this.restuarant.properties.tables);
+        $tables.append($tablesInput);
         $window.append($tables);
 
         const $waitstaff = $('<h3/>').text("Waitstaff:"+this.restuarant.properties.waitstaff);
+        const $waitstaffInput = $('<input type="text"/>').attr('data-class','prop').attr('data-id','waitstaff');
+              $waitstaffInput.attr('placeholder',this.restuarant.properties.waitstaff);
+        $waitstaff.append($waitstaffInput);
         $window.append($waitstaff);
 
         const $save = $('<button/>').text("SAVE");

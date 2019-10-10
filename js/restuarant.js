@@ -99,7 +99,7 @@ class Restuarant{
         this.updateName();
         this.updateFinanceWindow();
         this.updateTableDisplay();
-        //this.newDish();
+        this.newDish();
         
     }
     newDish(){
@@ -125,6 +125,7 @@ class Restuarant{
               $item.attr('data-class',category);
               $item.text(ingrediantInfo.display);
               $item.addClass("ingrediant ingrediant-active");
+              $item.css('background-image',"URL(./images/" + ingrediantInfo.imgSelect + ")");
               this.displayElements.$activeIngrediants.append($item);
     }
     updateName(name){
@@ -139,10 +140,19 @@ class Restuarant{
         const validDish = this.dish.validate();
         if(validDish){
             this.menu.addDish(this.dish);
+            this.displayElements.$activeIngrediants.empty();
+            this.dish.clearDish();
+            this.displayElements.$nameInput.text("");
+            this.displayElements.$priceInput.text("");
             this.dish = null;
         } else {
             new PopUp("Not a valid dish");
         }
+    }
+    updateProp(propName,propVal){
+        console.log("updating prop");
+        this.properties[propName] = propVal;
+        console.log(this.properties);
     }
     updateTotalTables(addTablesNum){
         this.properties.tables += addTablesNum;
@@ -180,8 +190,8 @@ class Restuarant{
         console.log("showing resturant builder");
         const modal = new RestuarantModal(this,newGame);
     }
-    validator(){
-
+    recieveReport(report){
+        console.log('resturant recieves:', report);
     }
     recieve(message,print){
         if(print){

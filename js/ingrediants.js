@@ -98,9 +98,7 @@ class Ingrediants{
                   $item.attr('data-class',category);
                   $item.text(items[i].display);
                   $item.addClass("ingrediant ingrediant-sidebar");
-            const $image = $('<img/>').addClass('ingrediant');
-                  $image.attr('src',"./images/" + items[i].imgSelect);
-            $item.append($image);
+                  $item.css('background-image',"URL(./images/" + items[i].imgSelect + ")");
                   //$item.addClass(category);
                  // $item.attr("draggable",true);
                 //   $item.on("drag",(e)=>{
@@ -200,8 +198,8 @@ const tempIngrediants = {
             cuisines: ['American','bistro'],
             methods: ['shred'],
             applications: ['raw'],
-            imgCooked:"onion_whole.png",
-            imgSelect:"onion_whole.png",
+            imgCooked:"onion_whiole.png",
+            imgSelect:"onion_whiole.png",
         },
     },
     grains:{
@@ -249,8 +247,8 @@ const tempIngrediants = {
             cuisines: ['American'],
             methods: [],
             applications: [],
-            imgCooked:"",
-            imgSelect:"",
+            imgCooked:"cheddar.png",
+            imgSelect:"cheddar.png",
         },
         milk:{
             id: 'milk',
@@ -265,7 +263,7 @@ const tempIngrediants = {
             methods: [],
             applications: [],
             imgCooked:"",
-            imgSelect:"",
+            imgSelect:"default_carton.png",
         },
         heavy_cream:{
             id: 'heavy_cream',
@@ -280,7 +278,7 @@ const tempIngrediants = {
             methods: [],
             applications: [],
             imgCooked:"",
-            imgSelect:"",
+            imgSelect:"default_carton.png",
         },
         yogurt:{
             id: 'yogurt',

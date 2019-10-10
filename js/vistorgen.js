@@ -4,28 +4,52 @@ class VisitorGenerator{
         //this.radio.addSubscriber("VisitorGenerator",this.recieve.bind(this));
         console.log("visitor gen running");
     }
-    createVisitorWave(resturant,trends,hour){
-        console.log("creating visitor wave");
-        console.log(resturant);
-        console.log(trends);
-        console.log(hour);
-        const waveSize = (hour) * resturant.properties.rating;
-        console.log('wavesize',waveSize);
-        //simulate visitor resturant choice
-        
+    createVisitorWave(restuarant,trends,industryAverages,hour){
+        // console.log("creating visitor wave");
+        // console.log(resturant);
+        //console.log(trends);
+        // console.log(hour);
+        let waveSize = (hour) * restuarant.properties.rating;
+        //console.log('wavesize',waveSize);
+        // if number of tables above industry average, lose those visitors interested in exclusivity
+        if(industryAverages['tables'] < restuarant.properties.tables){
+            waveSize = waveSize * (trends.exclusivity/100);
+        } 
+        //console.log('after tables', waveSize);
+        // if number of tables above industry average, lose those visitors interested in exclusivity
+        if(industryAverages['tables'] < restuarant.properties.tables){
+            waveSize = waveSize * (trends.exclusivity/100);
+        }
+        //console.log('after tables', waveSize);
+        if(industryAverages['decorScore'] > restuarant.properties.decorScore){
+            waveSize = waveSize * (trends.decor/100);
+        } 
+        //console.log('after decor', waveSize);
+        // for(let i in industryAverages){
+        //     console.log("ia",i, industryAverages[i]);
+        //     console.log("ra",i, restuarant['properties'][i]);
+        // }
+        //only create visitors who have actually "chosen" resturant
+        const visitorReports = [];
+        for(var i = 0; i < waveSize; i++){
+            const result = this.createVisitor(restuarant.menu,trends);
+            console.log(result);
+            if(result){
+                visitorReports.push(result);
+            }
+        }
+        return visitorReports
     }
-    createVisitor(hour,stars,trends){
-        console.log(trends);
-        //evaluate menu first
-        
+    createVisitor(menu,trends){        
         const first = this.randomFromArray(firstNames);
         const last = this.randomFromArray(lastNames);
         const trendSensitivity = Math.floor(Math.random()*100)/100;
         const vegetarian = Math.random() < trends.vegetarian ? true : false;
         const carnivore = !vegetarian && Math.random() < trends.carnivore ? true : false;
         const allergy = Math.random() < .1 ? this.randomFromArray(allergies) : null;
-        const visitor = new Visitor(trendSensitivity, first + " " + last,vegetarian,carnivore,allergy);
-        console.log(visitor);
+        const visitor = new Visitor(menu,trendSensitivity, first + " " + last,vegetarian,carnivore,allergy);
+        const visitorReport = visitor.report;
+        return visitorReport;
     }
     randomFromArray(arr){
         const r = Math.floor(Math.random()*arr.length);

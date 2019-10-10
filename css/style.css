@@ -113,7 +113,13 @@ main{
     width: 10vh;
     margin: 1vw;
     text-align: center;
-    background: white;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.ingrediant-display{
+    border: none;
 }
 
 #view-window{
@@ -161,8 +167,13 @@ main{
     flex-wrap: nowrap;
 }
 
-#ingredient-active{
-    
+
+.dish-container{
+    position: fixed;
+    display: flex;
+    height: 40vh;
+    flex-direction: column-reverse;
+    justify-content: flex-end;
 }
 
 #save-dish-button{

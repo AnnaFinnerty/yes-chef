@@ -74,16 +74,21 @@ class Dish{
         this.$dishDisplay.empty();
         if(this.container){
             const $container = $('<div/>').addClass('container '+this.container);
+            const $foodContainer = $('<div/>').addClass('dish-container')
+            $container.append($foodContainer);
             this.$dishDisplay.append($container);
         }
         if(this.ingrediants.length){
             for(let i = 0; i < this.ingrediants.length; i++){
                 const info = this.ingrediants[i];
-                const $ingrediant = $('<div/>').addClass("ingrediant ingrediant-display");
-                      $ingrediant.attr("src",info.imgCooked);
-                $('.container').append($ingrediant);
+                const $ingrediant = $('<img/>').addClass("ingrediant ingrediant-display");
+                      $ingrediant.css('background-image',"URL(./images/" + info.imgCooked + ")");
+                $('.dish-container').append($ingrediant);
             }
         }
+    }
+    clearDish(){
+        this.$dishDisplay.empty();
     }
     validate(){
         //validates the contents to determine if this is a valid dish that can enter the menu
