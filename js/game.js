@@ -43,9 +43,10 @@ class Game{
     startTimer(){
         if(!this.paused){
            this.timer = setInterval(()=>{
-               // increment clock in a awkwardly written way
+               // increment clock in awkwardly written way
                 if(this.hour < 24){
                     this.hour++;
+                    this.industry.nextVisitors(this.restaurant,this.hour);
                     //toggle open/closed signs at selected hours
                     if(this.hour === this.restaurant.properties.openHour){
                         this.open();
@@ -85,7 +86,7 @@ class Game{
         $('#open-display').removeClass("closed").addClass("open");
     }
     stayOpen(){
-        this.industry.nextVisitors();
+        this.industry.nextVisitors(this.restaurant,this.hour);
     }
     close(){
         $('#open-display').text("CLOSED")

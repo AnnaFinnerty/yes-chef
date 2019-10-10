@@ -5,7 +5,9 @@ class Industry{
         this.radio = radio;
         this.radio.addSubscriber("Industry",this.recieve.bind(this));
         this.vistorGenerator = new VisitorGenerator(this.radio);
+        this.returningVisitors = [];
         this.totalCompetitors = 20;
+        this.avgMealCost = 10;
         this.trends = {
             priceSensitivity: {
                 current: 5,
@@ -44,42 +46,12 @@ class Industry{
             },
         }
         this.restuarantStyles = {
-            "fast":{
-                numCompetitors: 0,
-                characteristics: ["ground beef"],
-                avgRating: 3,
-                avgDecorRating: 1,
-            },
-            "cafe":{
-                numCompetitors: 0,
-                characteristics: ["ground beef"],
-                avgRating: 3,
-                avgDecorRating: 1,
-            },
-            "bistro":{
-                numCompetitors: 0,
-                characteristics: ["ground beef"],
-                avgRating: 3,
-                avgDecorRating: 1,
-            },
-            "high end":{
-                numCompetitors: 0,
-                characteristics: ["ground beef"],
-                avgRating: 3,
-                avgDecorRating: 1,
-            },
-            "pizza":{
-                numCompetitors: 0,
-                characteristics: ["ground beef"],
-                avgRating: 3,
-                avgDecorRating: 1,
-            },
-            "sushi":{
-                numCompetitors: 0,
-                characteristics: ["ground beef"],
-                avgRating: 3,
-                avgDecorRating: 1,
-            },
+            "fast":[],
+            "cafe":[],
+            "bistro":[],
+            "high end":[],
+            "pizza":[],
+            "sushi":[],
         }
         this.awake();
     }
@@ -96,7 +68,8 @@ class Industry{
         const styles = Object.keys(this.restuarantStyles);
         while(remainingCompetitors > 0){
             const randomStyle = styles[Math.floor(Math.random()*styles.length)];
-            this.restuarantStyles[randomStyle]['numCompetitors'] += 1;
+            const randomResturant = new Restuarant(null,null,this.testMode,"Random Name");
+            this.restuarantStyles[randomStyle].push(new Restuarant(null,null,this.testMode,))
             remainingCompetitors--;
         }
         console.log(this.restuarantStyles);
@@ -122,10 +95,10 @@ class Industry{
             }
         }
     }
-    nextVisitors(){
+    nextVisitors(restaurant,hour){
         console.log("creating new visitor");
         console.log(this.trends);
-        this.vistorGenerator.createVisitor(this.trends);
+        this.vistorGenerator.createVisitorWave(restaurant,this.trends,hour);
     }
     randomBetween(start,end){
         return Math.floor(Math.random()*(end-start))+start

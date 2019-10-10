@@ -10,13 +10,14 @@ class Visitor{
         this.menuSize = menuSize;
         this.isVegetarian = vegetarian;
         this.isCarnivore = carnivore;
-        this.hasAllergy = allergy; 
+        this.hasAllergy = allergy;
+        this.willComeBack = false; 
     }
     rate(dish){
         const rating = 75;
         return rating
     }
-    rateDish(menu){
+    findDish(menu){
 
         const choices = [];
         for(let i in menu){

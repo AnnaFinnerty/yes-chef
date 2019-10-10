@@ -1,28 +1,40 @@
 class DialogueGenerator{
-    constructor(radio){
-        this.radio = radio;
-        this.radio.addSubscriber("DialogueGenerator",this.recieve.bind(this));
+    constructor(){
         this.requestPaths = {
             "suggestRestuarantName": this.suggestRestuarantName,
         }
     }
     
     suggestRestuarantName(){
-        const firstWords = [];
-        const secondWords = [];
+        
     }
+    reviewGen(resturantName, visitorName, rating, dish){
+        const isPositive = rating >= 3;
+        
+        const positiveReviews = [
+            "" + resturantName + " is a " 
+        ]
+        
+        const negativeReviews = [
+                    
+        ]
+        
+        const returningReviews = [
+                    
+        ]
 
-    recieve(request,print){
-        if(print){
-            console.log("DialogueGen recieves:");
-            console.log(message);
-        }
-        if(this.requestPaths[request.type]){
 
-        } else {
-            console.log("DialogueGenError: request failelure for type:" + request.type);
-        }
     }
-
+    randomFromArrayBetween(arr){
+        const r = Math.floor(Math.random()*arr.length);
+        return arr[r];
+    }
 }
+
+
+
+
+const adjectives = ["repugnant","homley","quaint","comfortable", "well-appointed", "gorgeous","lavish","ravishing"]
+const foodAdjectives = ["disgusting", "swallowable", "well-proportioned", "tasty", "satisfying", "mouth-watering", "delicious", "scrumptious"]      
+
 
