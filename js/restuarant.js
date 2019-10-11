@@ -191,7 +191,7 @@ class Restuarant{
         const modal = new RestuarantModal(this,newGame);
     }
     recieveReport(report){
-        console.log('resturant recieves:', report);
+        //console.log('resturant recieves:', report);
     }
     recieve(message,print){
         if(print){

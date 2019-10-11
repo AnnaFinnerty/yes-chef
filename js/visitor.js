@@ -1,6 +1,5 @@
 class Visitor{
     constructor(menu,trendSensitivity, name,vegetarian,carnivore,allergy,priceSensitvity,numOfIngrediants, menuSize){
-        console.log("new visitor created");
         this.menu = menu;
         this.trendSensitivity = trendSensitivity;
         this.name = name;
@@ -21,7 +20,6 @@ class Visitor{
         this.findDish();
     }
     findDish(){
-        console.log("finding dish!");
         const choices = [];
         //evaluate menu options
         for(let i in this.menu.menu){

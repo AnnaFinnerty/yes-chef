@@ -215,8 +215,8 @@ const tempIngrediants = {
             cuisines: ['American','Italian'],
             methods: ['shred'],
             applications: ['raw'],
-            imgCooked:"",
-            imgSelect:"",
+            imgCooked:"pasta.png",
+            imgSelect:"pasta.png",
         },
         rice:{
             id: 'rice',
@@ -230,8 +230,8 @@ const tempIngrediants = {
             cuisines: ['American','Chinese','Japanese'],
             methods: [],
             applications: [],
-            imgCooked:"",
-            imgSelect:"",
+            imgCooked:"rice.png",
+            imgSelect:"rice.png",
         },
     },
     dairy:{
@@ -309,8 +309,8 @@ const tempIngrediants = {
             cuisines: ['American','Greek'],
             methods: [],
             applications: [],
-            imgCooked:"",
-            imgSelect:"",
+            imgCooked:"ground_beef_patty.png",
+            imgSelect:"ground_beef_uncooked.png",
         },
         beef_tenderloin:{
             id: 'beef_tenderloin',
@@ -345,8 +345,8 @@ const tempIngrediants = {
     },
     poultry:{
         chicken_breast:{
-            id: 'apple',
-            display: 'apple',
+            id: 'chicken_breast',
+            display: 'chicken breast',
             price: .5,
             calories: 100,
             exoticness: 0,
@@ -356,8 +356,8 @@ const tempIngrediants = {
             cuisines: ['American','Greek'],
             methods: [],
             applications: [],
-            imgCooked:"",
-            imgSelect:"",
+            imgCooked:"chicen_breast_cooked.png",
+            imgSelect:"chicen_breast_uncooked.png",
         },
         chicken_wing:{
             id: 'chicken_wing',
@@ -372,7 +372,7 @@ const tempIngrediants = {
             methods: [],
             applications: [],
             imgCooked:"",
-            imgSelect:"",
+            imgSelect:"chicken_wing.png",
         },
     },
     fish:{
@@ -389,7 +389,7 @@ const tempIngrediants = {
             methods: [],
             applications: [],
             imgCooked:"",
-            imgSelect:"",
+            imgSelect:"cod.png",
         },
     },
     shellfish:{
@@ -421,7 +421,7 @@ const tempIngrediants = {
             methods: [],
             applications: [],
             imgCooked:"",
-            imgSelect:"",
+            imgSelect:"default_jar_green.png",
         },
     },
     misc:{

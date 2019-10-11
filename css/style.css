@@ -48,9 +48,13 @@ header{
     background-repeat: no-repeat;
 }
 
-#menu-dropdown-button, #industry-menu-dropdown-button, #status-display,#date-container{
+#resturant-dropdown-button,#menu-dropdown-button, #industry-menu-dropdown-button, #status-display,#date-container{
     width: 20%;
     height: 100%;
+}
+
+#resturant-dropdown-button,#menu-dropdown-button, #industry-menu-dropdown-button{
+    padding-top: 10vh;
 }
 
 #resturant-dropdown-button, #menu-dropdown-button, #industry-menu-dropdown-button,#date-container{
@@ -167,6 +171,18 @@ main{
     flex-wrap: nowrap;
 }
 
+#save-dish-button{
+    float: right;
+    font-size: 3vw;
+    margin-right: 5vw;
+}
+#active-dish{
+    border: 3px dashed black;
+    border-radius: 50%;
+    width: 40vw;
+    min-height: 10vh;
+    margin: 0 auto;
+}
 
 .dish-container{
     position: fixed;
@@ -176,19 +192,16 @@ main{
     justify-content: flex-end;
 }
 
-#save-dish-button{
-    float: right;
-    font-size: 3vw;
-    margin-right: 5vw;
-    margin-top: -3vw;
+.ingrediant-display{
+    position: absolute;
 }
 
-#active-dish{
-    border: 3px dashed black;
-    border-radius: 50%;
-    width: 40vw;
-    min-height: 10vh;
-    margin: 0 auto;
+.left-ingrediant{
+    margin-left: 0vw;
+}
+
+.right-ingrediant{
+    margin-left: 1vw;
 }
 
 #reviews-sidebar{
@@ -197,6 +210,9 @@ main{
     width: 15vw;
 }
 
+.sidebar-review{
+    color: goldenrod;
+}
 
 /*  */
 

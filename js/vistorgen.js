@@ -5,11 +5,7 @@ class VisitorGenerator{
         console.log("visitor gen running");
     }
     createVisitorWave(restuarant,trends,industryAverages,hour){
-        // console.log("creating visitor wave");
-        // console.log(resturant);
-        //console.log(trends);
-        // console.log(hour);
-        let waveSize = (hour) * restuarant.properties.rating;
+        let waveSize = (hour) * (restuarant.properties.rating/10);
         //console.log('wavesize',waveSize);
         // if number of tables above industry average, lose those visitors interested in exclusivity
         if(industryAverages['tables'] < restuarant.properties.tables){
@@ -24,21 +20,14 @@ class VisitorGenerator{
         if(industryAverages['decorScore'] > restuarant.properties.decorScore){
             waveSize = waveSize * (trends.decor/100);
         } 
-        //console.log('after decor', waveSize);
-        // for(let i in industryAverages){
-        //     console.log("ia",i, industryAverages[i]);
-        //     console.log("ra",i, restuarant['properties'][i]);
-        // }
+       
         //only create visitors who have actually "chosen" resturant
-        const visitorReports = [];
+        const visitors = [];
         for(var i = 0; i < waveSize; i++){
-            const result = this.createVisitor(restuarant.menu,trends);
-            console.log(result);
-            if(result){
-                visitorReports.push(result);
-            }
+            const visitor = this.createVisitor(restuarant.menu,trends);
+            visitors.push(visitor);
         }
-        return visitorReports
+        return visitors
     }
     createVisitor(menu,trends){        
         const first = this.randomFromArray(firstNames);
@@ -48,8 +37,7 @@ class VisitorGenerator{
         const carnivore = !vegetarian && Math.random() < trends.carnivore ? true : false;
         const allergy = Math.random() < .1 ? this.randomFromArray(allergies) : null;
         const visitor = new Visitor(menu,trendSensitivity, first + " " + last,vegetarian,carnivore,allergy);
-        const visitorReport = visitor.report;
-        return visitorReport;
+        return visitor;
     }
     randomFromArray(arr){
         const r = Math.floor(Math.random()*arr.length);

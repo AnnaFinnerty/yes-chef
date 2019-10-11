@@ -81,9 +81,14 @@ class Dish{
         if(this.ingrediants.length){
             for(let i = 0; i < this.ingrediants.length; i++){
                 const info = this.ingrediants[i];
-                const $ingrediant = $('<img/>').addClass("ingrediant ingrediant-display");
+                const $ingrediant = $('<div/>').addClass("ingrediant ingrediant-display");
                       $ingrediant.css('background-image',"URL(./images/" + info.imgCooked + ")");
-                $('.dish-container').append($ingrediant);
+                if(i%2 === 0){
+                    $ingrediant.addClass('left-ingrediant')
+                } else {
+                    $ingrediant.addClass('right-ingrediant')
+                }
+                $('.container').append($ingrediant);
             }
         }
     }

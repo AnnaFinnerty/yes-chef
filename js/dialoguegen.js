@@ -34,10 +34,12 @@ class DialogueGenerator{
             "" + resturantName + " is " + foodAdj1 + ", " + foodAdj2 + ", and " + decorAdj + ". We'll be back soon!"        
         ]
 
+        const review = isPositive ? this.randomFromArray(positiveReviews) : this.randomFromArray(negativeReviews);
+        return review
 
     }
     professionalReviewGen(){
-        
+
     }
 
     randomFromArray(arr){

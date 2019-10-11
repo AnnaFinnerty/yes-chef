@@ -83,6 +83,34 @@ class MenuModal extends Modal{
     }
 }
 
+class ReviewModal extends Modal{
+    constructor(reviews,stars){
+        super();
+        this.stars = stars;
+        this.reviews = reviews;
+        this.buildReviews();
+    }
+    
+    buildReviews(){
+        console.log("building reviews");
+        const $window = $('<div/>').addClass('review-window');
+        const $row = $('<div/>').addClass("row");
+        const $closeButton = $('<button>X</button>').addClass('close-modal-button');
+              $closeButton.on('click', (e)=>{
+                  this.close(e);
+              })
+              $row.append($closeButton);
+              $window.append($row);
+        $window.append($('<h2>REVIEWS</h2>'));
+        for(let i = 0; i < this.reviews.length; i++){
+            const review = this.reviews[i];
+            const $review = $('<div/>').addClass('review-container');
+            $review.append($('<span/>').text(review.text));
+        }
+        $(".modal").append($window);
+    }
+}
+
 class IndustryModal extends Modal{
     constructor(industry){
         super();
@@ -236,8 +264,8 @@ class RestuarantModal extends Modal{
         $waitstaff.append($waitstaffInput);
         $window.append($waitstaff);
 
-        const $save = $('<button/>').text("SAVE");
-        $save.on('click',()=>this.saveState());
+        // const $save = $('<button/>').text("SAVE");
+        // $save.on('click',()=>this.saveState());
     }
     newResturantUI($window){
         console.log(this.info);

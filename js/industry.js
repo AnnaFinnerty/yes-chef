@@ -6,6 +6,7 @@ class Industry{
         this.radio.addSubscriber("Industry",this.recieve.bind(this));
         this.vistorGenerator = new VisitorGenerator(this.radio);
         this.dialogueGenerator = new DialogueGenerator();
+        this.reviews = new Reviews();
         this.returningVisitors = [];
         this.competitors = [];
         this.totalCompetitors = 20;
@@ -124,10 +125,21 @@ class Industry{
         }
     }
     nextVisitors(restaurant,hour){
-        console.log("creating new visitor");
-        console.log(this.trends);
-        const reports = this.vistorGenerator.createVisitorWave(restaurant,this.trends,this.industryAverages,hour);
-        return reports
+        //console.log("creating new visitor");
+        //console.log(this.trends);
+        const visitors = this.vistorGenerator.createVisitorWave(restaurant,this.trends,this.industryAverages,hour);
+        const report = {};
+        for(let i = 0; i < visitors.length; i++){
+            const r = visitors[i].report;
+            if(r.rating === 5){
+                this.returningVisitors.push(visitors);
+            }
+            if(r.rating === 4 || r.rating <= 1){
+                const review = this.dialogueGenerator.reviewGen(restaurant.properties.name,visitors[i].name,report.rating, report.dish);
+                this.reviews.addReview({text:review,name:r.name,rating:r.rating});
+            }
+        }
+        return report
     }
     randomBetween(start,end){
         return Math.floor(Math.random()*(end-start))+start
@@ -141,11 +153,5 @@ class Industry{
             list.push(style);
         }
         return list
-    }
-    recieve(message,print){
-        if(print){
-            console.log("Industry recieves:");
-            console.log(message);
-        }
     }
 }
