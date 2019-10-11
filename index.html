@@ -6,24 +6,26 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Yes, Chef!</title>
     <script src = "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Audiowide&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Caveat&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body class="column">
-    <header class="row">
+    <header class="column">
         <nav class="row">
             <div class="column" id="status-display">
                 <h1 id="name-display"></h1>
                 <div class="column" id="finance-display">
                     <span class="profit-element" id="profit-daily">0</span>
                     <span class="profit-element" id="profit-total">0</span>
-                    <span class="profit-element" id="tables-total-image">
+                    <div class="row">
+                        <span class="profit-element" id="tables-total-image"></span>
                         <span id="tables-total"></span>
-                    </span>
-                    <span class="profit-element" id="tables-full-image">
+                    </div>
+                    <div class="row">
+                        <span class="profit-element" id="tables-full-image"></span>
                         <span id="tables-full"></span>
-                    </span>
-                    <span class="closed" id="open-display">CLOSED</span>
+                    </div>
                 </div>
             </div>
             <div class="dropdown-button" id="resturant-dropdown-button">
@@ -36,16 +38,14 @@
                 industry
             </div>
             <div class="column" id="date-container">
-                <div class="column">
-                    <span class="time-element" id="time-display"></span>
-                    <div class="time-element" id="date-display"></div>
-                </div>
-                
-                <div class="row time-element">
+                <div class="column time-element">
+                    <div class="closed" id="open-display"></div>
+                    <span>Hours:</span>
                     <span id="opening-hours-display">5:00pm-10pm</span>
                 </div>
             </div>
         </nav>
+    <div class="awning"></div>
     </header>
     <main class="row">
         <aside id="ingrediants-sidebar">
@@ -60,6 +60,9 @@
                 </div>
                 <div class="scrollX" id="active-ingredients"></div>
                 <button id="save-dish-button">save</button>
+                <div class="clock">
+                    <span id="time-display">0100</span>
+                </div>
             </div>
             <div class="floor">
                 <div class = "table">
@@ -69,12 +72,14 @@
         </div>
         <aside id="reviews-sidebar">
             <h2>reviews</h2>
-            <span id="stars-display">***</span>
-            <div class="column scrollY" id="latest-reviews-display"></div>
+            <span class="stars" id="stars-display">***</span>
+            <div class="reviews-scroll-container">
+                <div class="column scrollY" id="latest-reviews-display"></div>
+            </div>
         </aside>
     </main>
-    <footer>by Anna Finnerty 
-        <button id="pause-button">PAUSE</button>
+    <footer>
+        <button id="pause-button">START</button>
     </footer>
     <div class="modal hidden"></div>
     <script src="js/radio.js"></script>

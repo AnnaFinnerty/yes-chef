@@ -6,6 +6,8 @@ class Restuarant{
         this.styles = styles;
         //all properties parameters must exist or validation will fail!!
         this.properties = {
+            daysInOperation: 0,
+            totalVisitors: 0,
             name: name,
             style: style,
             openHour: openHour,
@@ -110,6 +112,7 @@ class Restuarant{
         this.dish = new Dish();
         for(let i = 0; i < this.containers.length; i++){
             const $container = $('<div/>').addClass('ingrediant ingrediant-active');
+                  $container.css('background-image',"URL(./images/" + this.containers[i] + ".png)");
                   $container.attr('data-id',this.containers[i]);
                   $container.attr('data-class',"container");
                   $container.attr('data-i',i);
@@ -175,28 +178,33 @@ class Restuarant{
         this.displayElements.$tablesFull.text(this.properties.filledTables);
     }
     profit(amt){
-        this.properties.profit += amt;
+        this.properties.profitDaily += Math.floor(amt);
+        this.properties.profitTotal += Math.floor(amt);
         this.updateFinanceWindow();
     }
     loss(amt){
-        this.properties.profit -= amt;
+        this.properties.profitDaily -= Math.floor(amt);
+        this.properties.profitTotal -= Math.floor(amt);
         this.updateFinanceWindow();
     }
     updateFinanceWindow(){
         $('#profit-daily').text("Daily$: " + this.properties.profitDaily);
         $('#profit-total').text("Total$:" + this.properties.profitTotal);
     }
+    clearDailyProft(){
+        this.properties.profitDaily = 0;
+        this.daysInOperation += 1;
+        this.updateFinanceWindow();
+    }
     showRestuarantBuilder(newGame){
         console.log("showing resturant builder");
         const modal = new RestuarantModal(this,newGame);
     }
     recieveReport(report){
-        //console.log('resturant recieves:', report);
-    }
-    recieve(message,print){
-        if(print){
-            console.log("Resturant recieves:");
-            console.log(message);
+        console.log('resturant recieves:', report);
+        for(let i = 0; i < report.dishesEaten.length; i++){
+            const profit = report.dishesEaten[i].profit;
+            this.profit(profit);
         }
     }
 }

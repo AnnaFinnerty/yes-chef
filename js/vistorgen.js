@@ -21,9 +21,12 @@ class VisitorGenerator{
             waveSize = waveSize * (trends.decor/100);
         } 
        
+        //limit number of visitors to seats in resturants 
+        const finalWaveSize = restuarant.tables*2 < waveSize ? restuarant.tables*2 : waveSize;
+
         //only create visitors who have actually "chosen" resturant
         const visitors = [];
-        for(var i = 0; i < waveSize; i++){
+        for(var i = 0; i < finalWaveSize; i++){
             const visitor = this.createVisitor(restuarant.menu,trends);
             visitors.push(visitor);
         }

@@ -3,7 +3,6 @@ class Industry{
     constructor(radio){
         console.log("industry running");
         this.radio = radio;
-        this.radio.addSubscriber("Industry",this.recieve.bind(this));
         this.vistorGenerator = new VisitorGenerator(this.radio);
         this.dialogueGenerator = new DialogueGenerator();
         this.reviews = new Reviews();
@@ -128,11 +127,16 @@ class Industry{
         //console.log("creating new visitor");
         //console.log(this.trends);
         const visitors = this.vistorGenerator.createVisitorWave(restaurant,this.trends,this.industryAverages,hour);
-        const report = {};
+        const report = {
+            numVisitors: visitors.length,
+            returningVisitors: this.returningVisitors.length,
+            dishesEaten: [],
+        };
         for(let i = 0; i < visitors.length; i++){
             const r = visitors[i].report;
+            report.dishesEaten.push(r.dish);
             if(r.rating === 5){
-                this.returningVisitors.push(visitors);
+                this.returningVisitors.push(visitors[i]);
             }
             if(r.rating === 4 || r.rating <= 1){
                 const review = this.dialogueGenerator.reviewGen(restaurant.properties.name,visitors[i].name,report.rating, report.dish);

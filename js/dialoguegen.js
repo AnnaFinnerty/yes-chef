@@ -11,7 +11,8 @@ class DialogueGenerator{
         return firstWord + " " + secondWord
     }
     reviewGen(resturantName, visitorName, rating, dish){
-        const isPositive = rating >= 3;
+        console.log(rating);
+        const isPositive = rating <= 3;
         const decorAdj = isPositive ? this.randomFromArray(posDecorAdjectives) : this.randomFromArray(negDecorAdjectives);
         const foodAdj1 = isPositive ? this.randomFromArray(posFoodAdjectives) : this.randomFromArray(negFoodAdjectives);
         const foodAdj2 = isPositive ? this.randomFromArray(posDecorAdjectives) : this.randomFromArray(negDecorAdjectives);

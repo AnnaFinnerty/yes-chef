@@ -9,6 +9,7 @@ class Dish{
         this.container = container ? container : null;
         this.menuPrice = menuPrice ? menuPrice: 0;
         this.wholesalePrice = 0;
+        this.profit = 0;
         // this container will determine shown image 
         this.ingrediants = [];
         this.avgRating = 0;
@@ -26,6 +27,7 @@ class Dish{
     addIngredient(ingrediantInfo){
         this.ingrediants.push(ingrediantInfo);
         this.wholesalePrice += ingrediantInfo.price;
+        this.profit = Math.floor((this.menuPrice - this.wholesalePrice)*1000)/1000;
         this.exoticness += ingrediantInfo.exoticness;
         if(!ingrediantInfo.vegetarian){
             this.vegetarian = false;
@@ -82,6 +84,8 @@ class Dish{
             for(let i = 0; i < this.ingrediants.length; i++){
                 const info = this.ingrediants[i];
                 const $ingrediant = $('<div/>').addClass("ingrediant ingrediant-display");
+                      //add special class to ingrediant, if any
+                      $ingrediant.addClass(info.addClass);
                       $ingrediant.css('background-image',"URL(./images/" + info.imgCooked + ")");
                 if(i%2 === 0){
                     $ingrediant.addClass('left-ingrediant')

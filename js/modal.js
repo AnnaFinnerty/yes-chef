@@ -93,6 +93,7 @@ class ReviewModal extends Modal{
     
     buildReviews(){
         console.log("building reviews");
+        console.log(this.reviews);
         const $window = $('<div/>').addClass('review-window');
         const $row = $('<div/>').addClass("row");
         const $closeButton = $('<button>X</button>').addClass('close-modal-button');
@@ -102,12 +103,12 @@ class ReviewModal extends Modal{
               $row.append($closeButton);
               $window.append($row);
         $window.append($('<h2>REVIEWS</h2>'));
+        const $reviewContainer = $('<div/>').addClass('reviews-scroll-container');
         for(let i = 0; i < this.reviews.length; i++){
-            const review = this.reviews[i];
-            const $review = $('<div/>').addClass('review-container');
-            $review.append($('<span/>').text(review.text));
+            const $review = this.reviews[i];
+            $reviewContainer.append($review);
         }
-        $(".modal").append($window);
+        $(".modal").append($reviewContainer);
     }
 }
 

@@ -124,22 +124,6 @@ class Ingrediants{
 }
 
 const tempIngrediants = {
-    fruit:{
-        apple:{
-            id: 'apple',
-            display: 'apple',
-            price: .1,
-            calories: 20,
-            vegetarian: true,
-            vegan: true,
-            classes: ['fruit'],
-            cuisines: ['American','bistro'],
-            methods: ['slice', 'chop', 'dice'],
-            applications: ['raw','baked'],
-            imgCooked:"apple_whole.png",
-            imgSelect:"apple_whole.png",
-        },
-    },
     vegetables:{
         lettuce:{
             id: 'lettuce',
@@ -155,6 +139,7 @@ const tempIngrediants = {
             applications: ['raw'],
             imgCooked:"lettuce.png",
             imgSelect:"lettuce.png",
+            addClass: "scale-3",
         },
         kale:{
             id: 'kale',
@@ -170,6 +155,7 @@ const tempIngrediants = {
             applications: ['raw'],
             imgCooked:"lettuce.png",
             imgSelect:"lettuce.png",
+            addClass: "scale-3",
         },
         tomato:{
             id: 'tomato',
@@ -185,6 +171,7 @@ const tempIngrediants = {
             applications: ['raw'],
             imgCooked:"tomato_slice.png",
             imgSelect:"tomato.png",
+            addClass: "scale-1",
         },
         onion:{
             id: 'onion',
@@ -200,6 +187,40 @@ const tempIngrediants = {
             applications: ['raw'],
             imgCooked:"onion_whiole.png",
             imgSelect:"onion_whiole.png",
+            addClass: "scale-0",
+        },
+        potato:{
+            id: 'potato',
+            display: 'potato',
+            price: .1,
+            calories: 20,
+            exoticness: 0,
+            vegetarian: true,
+            vegan: true,
+            classes: ['vegetable'],
+            cuisines: ['American','bistro'],
+            methods: ['shred'],
+            applications: ['raw'],
+            imgCooked:"potato.png",
+            imgSelect:"potato.png",
+            addClass: "scale-0",
+        },
+    },
+    fruit:{
+        apple:{
+            id: 'apple',
+            display: 'apple',
+            price: .1,
+            calories: 20,
+            vegetarian: true,
+            vegan: true,
+            classes: ['fruit'],
+            cuisines: ['American','bistro'],
+            methods: ['slice', 'chop', 'dice'],
+            applications: ['raw','baked'],
+            imgCooked:"apple_sliced.png",
+            imgSelect:"apple_whole.png",
+            addClass: "circle-multiply",
         },
     },
     grains:{
@@ -217,6 +238,7 @@ const tempIngrediants = {
             applications: ['raw'],
             imgCooked:"pasta.png",
             imgSelect:"pasta.png",
+            addClass: "scale-3",
         },
         rice:{
             id: 'rice',
@@ -232,6 +254,7 @@ const tempIngrediants = {
             applications: [],
             imgCooked:"rice.png",
             imgSelect:"rice.png",
+            addClass: "scale-3",
         },
     },
     dairy:{
@@ -249,6 +272,7 @@ const tempIngrediants = {
             applications: [],
             imgCooked:"cheddar.png",
             imgSelect:"cheddar.png",
+            addClass: "scale-0",
         },
         milk:{
             id: 'milk',
@@ -264,6 +288,7 @@ const tempIngrediants = {
             applications: [],
             imgCooked:"",
             imgSelect:"default_carton.png",
+            addClass: "scale-0",
         },
         heavy_cream:{
             id: 'heavy_cream',
@@ -279,6 +304,7 @@ const tempIngrediants = {
             applications: [],
             imgCooked:"",
             imgSelect:"default_carton.png",
+            addClass: "scale-0",
         },
         yogurt:{
             id: 'yogurt',
@@ -294,6 +320,7 @@ const tempIngrediants = {
             applications: [],
             imgCooked:"",
             imgSelect:"",
+            addClass: "scale-0",
         }
     },
     meat:{
@@ -311,6 +338,7 @@ const tempIngrediants = {
             applications: [],
             imgCooked:"ground_beef_patty.png",
             imgSelect:"ground_beef_uncooked.png",
+            addClass: "scale-2",
         },
         beef_tenderloin:{
             id: 'beef_tenderloin',
@@ -324,8 +352,25 @@ const tempIngrediants = {
             cuisines: ['American','Greek'],
             methods: [],
             applications: [],
-            imgCooked:"",
-            imgSelect:"",
+            imgCooked:"tenderloin_cooked.png",
+            imgSelect:"tenderloin_uncooked.png",
+            addClass: "scale-2",
+        },
+        steak:{
+            id: 'steak',
+            display: 'steak',
+            price: .5,
+            calories: 120,
+            exoticness: 1,
+            vegetarian: false,
+            vegan: false,
+            classes: ['meat','beef'],
+            cuisines: ['American','Greek'],
+            methods: [],
+            applications: [],
+            imgCooked:"steak_cooked.png",
+            imgSelect:"steak_raw.png",
+            addClass: "scale-2",
         },
         pork_shortrib:{
             id: 'pork_shortrib',
@@ -339,8 +384,9 @@ const tempIngrediants = {
             cuisines: ['American','Greek'],
             methods: [],
             applications: [],
-            imgCooked:"",
-            imgSelect:"",
+            imgCooked:"pork_shortrib_cooked.png",
+            imgSelect:"pork_shortrib_uncooked.png",
+            addClass: "scale-2",
         }, 
     },
     poultry:{
@@ -358,6 +404,7 @@ const tempIngrediants = {
             applications: [],
             imgCooked:"chicen_breast_cooked.png",
             imgSelect:"chicen_breast_uncooked.png",
+            addClass: "scale-2",
         },
         chicken_wing:{
             id: 'chicken_wing',
@@ -373,6 +420,7 @@ const tempIngrediants = {
             applications: [],
             imgCooked:"",
             imgSelect:"chicken_wing.png",
+            addClass: "scale-1",
         },
     },
     fish:{
@@ -390,6 +438,7 @@ const tempIngrediants = {
             applications: [],
             imgCooked:"",
             imgSelect:"cod.png",
+            addClass: "scale-2",
         },
     },
     shellfish:{
@@ -405,8 +454,9 @@ const tempIngrediants = {
             cuisines: ['American','Greek'],
             methods: [],
             applications: [],
-            imgCooked:"",
-            imgSelect:"",
+            imgCooked:"shrimp_uncooked.png",
+            imgSelect:"shrimp.png",
+            addClass: "scale-2",
         },
     },
     spices:{
@@ -422,6 +472,21 @@ const tempIngrediants = {
             applications: [],
             imgCooked:"",
             imgSelect:"default_jar_green.png",
+            addClass: "scale-0",
+        },
+        basil:{
+            id: 'basil',
+            display: 'basil',
+            price: .05,
+            calories: 0,
+            exoticness: 0,
+            classes: ['mic'],
+            cuisines: ['American','Greek'],
+            methods: [],
+            applications: [],
+            imgCooked:"",
+            imgSelect:"default_jar_green.png",
+            addClass: "scale-0",
         },
     },
     misc:{
@@ -436,6 +501,7 @@ const tempIngrediants = {
             applications: [],
             imgCooked:"",
             imgSelect:"",
+            addClass: "scale-0",
         },
     },
 }

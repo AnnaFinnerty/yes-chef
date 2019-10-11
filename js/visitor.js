@@ -14,6 +14,7 @@ class Visitor{
         this.hasAllergy = allergy;
         this.willComeBack = false;
         this.report = {
+            name: name,
             rating: 0,
             dish: null,
         }
@@ -38,7 +39,7 @@ class Visitor{
         this.report.rating = this.rate(dish);
     }
     rate(dish){
-        const rating = Math.floor(Math.random()*5);
+        const rating = Math.floor(Math.random()*6);
         return rating
     }
 }

@@ -8,7 +8,7 @@ class Game{
         this.eventManager = new EventManager(this.radio);
         this.dialogueGenerator = new DialogueGenerator(this.radio);
         this.restaurant = null;
-        this.lengthOfHour = testMode ? 500: 1000;
+        this.lengthOfHour = testMode ? 1000: 500; //for class demo, 10000
         this.paused = true;
         this.year = 0;
         this.month = 0;
@@ -19,7 +19,13 @@ class Game{
     }
     awake(){
         $('#pause-button').on('click',()=>{
-            this.pause();
+            if(this.paused){
+                $('#pause-button').text('PAUSE');
+                this.unpause();
+            } else {
+                $('#pause-button').text('START');
+                this.pause();
+            }
         })
     }
     start(){
@@ -30,9 +36,8 @@ class Game{
         console.log("creating resturant");
         const stylesList = this.industry.getStylesList();
         this.restaurant = new Restuarant(false,stylesList,this.testMode);
-        this.restaurant.showRestuarantBuilder();
-        this.paused = false;
-        this.startTimer();
+        //this.restaurant.showRestuarantBuilder();
+        //this.startTimer();
     }
     startTimer(){
         if(!this.paused){
@@ -78,7 +83,7 @@ class Game{
         clearInterval(this.timer);
     }
     open(){
-        $('#open-display').text("OPEN")
+        //$('#open-display').text("OPEN")
         $('#open-display').removeClass("closed").addClass("open");
     }
     stayOpen(){
@@ -86,7 +91,7 @@ class Game{
         this.restaurant.recieveReport(reports);
     }
     close(){
-        $('#open-display').text("CLOSED")
+        //$('#open-display').text("CLOSED")
         $('#open-display').removeClass("open").addClass("closed");
     }
     pause(){
